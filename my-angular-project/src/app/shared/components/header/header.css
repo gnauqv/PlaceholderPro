@@ -1,0 +1,61 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0; /* thay vì right + width: 94% */
+  width: 100%;
+  height: 80px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 48px;
+  background-color: #000;
+  border-bottom: 1px solid #222;
+
+  color: #fff;
+  font-family: 'Helvetica Neue', sans-serif;
+  z-index: 10;
+
+  box-sizing: border-box;
+}
+
+.spacingHeader {
+  height: 85px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 600; /* semi-bold hợp lệ */
+  letter-spacing: 2px;
+  color: #c4a03c;
+}
+
+.nav a {
+  margin-left: 32px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  padding-bottom: 2px;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.nav a:hover,
+.nav a.active {
+  color: #989090;
+  border-bottom: 2px solid #989090;
+  cursor: pointer;
+}
+
+.srt-button {
+  color: #c4a03c;
+  font-weight: 600;
+  padding: 8px 14px;
+  background-color: rgba(164, 161, 161, 0.2);
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.srt-button:hover {
+  background-color: rgba(164, 161, 161, 0.5);
+}

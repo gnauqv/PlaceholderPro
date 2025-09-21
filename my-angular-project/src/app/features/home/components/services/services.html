@@ -1,0 +1,15 @@
+<section class="services-section">
+  <h2>Exceptional Services</h2>
+  <p class="subtitle">
+    We deliver comprehensive solutions that combine artistry with technology, 
+    creating experiences that resonate and perform beyond expectations.
+  </p>
+
+  <div class="services-grid">
+    <div class="service-card" *ngFor="let service of services">
+      <div class="icon">{{ service.icon }}</div>
+      <h3>{{ service.title }}</h3>
+      <p>{{ service.description }}</p>
+    </div>
+  </div>
+</section>

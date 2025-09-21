@@ -1,0 +1,17 @@
+.albums-container {
+  padding: 20px;
+}
+
+.albums-container h2 {
+  margin-bottom: 16px;
+}
+
+.albums-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.albums-container li {
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}

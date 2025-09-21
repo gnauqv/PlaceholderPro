@@ -1,0 +1,25 @@
+.posts {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.posts ul {
+  list-style: none;
+  padding: 0;
+}
+
+.posts li {
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+}
+
+.posts h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.posts p {
+  margin: 0;
+  color: #555;
+}
