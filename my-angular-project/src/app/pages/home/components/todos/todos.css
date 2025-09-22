@@ -1,0 +1,76 @@
+.todos-container {
+  text-align: center;
+  margin: 20px;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.nav-btn:hover {
+  background: #333;
+}
+
+.carousel-track {
+  width: 500px;
+  overflow: hidden;
+  margin: 0 10px;
+}
+
+.carousel-slide {
+  display: none;
+  justify-content: center;
+  gap: 16px;
+}
+.carousel-slide.active {
+  display: flex;
+}
+
+.todo-card {
+  background: #fdfdfd;
+  border-radius: 12px;
+  padding: 16px;
+  width: 220px;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.todo-card:hover {
+  transform: translateY(-4px);
+}
+
+.todo-card.completed {
+  border-left: 6px solid #4caf50;
+}
+.todo-card:not(.completed) {
+  border-left: 6px solid #ff9800;
+}
+
+.todo-icon {
+  font-size: 28px;
+}
+
+.todo-content h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}

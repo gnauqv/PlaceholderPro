@@ -1,0 +1,14 @@
+<div class="post-detail" *ngIf="post">
+  <h2>{{ post.title }}</h2>
+  <p>{{ post.body }}</p>
+</div>
+
+<hr>
+
+<div class="comments">
+  <h3>💬 Comments ({{ comments.length }})</h3>
+  <div class="comment" *ngFor="let c of comments">
+    <p class="user">{{ c.name }} ({{ c.email }})</p>
+    <p>{{ c.body }}</p>
+  </div>
+</div>

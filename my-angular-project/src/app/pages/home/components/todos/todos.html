@@ -1,0 +1,24 @@
+<div class="todos-container">
+  <h2 class="title">📋 Todos</h2>
+
+  <div class="carousel">
+    <button class="nav-btn" (click)="prev()">⬅</button>
+
+    <div class="carousel-track">
+      <div class="carousel-slide" *ngFor="let group of pagedTodos; let i = index" [class.active]="i === currentPage">
+        <div *ngFor="let todo of group" class="todo-card" [class.completed]="todo.completed">
+          <div class="todo-icon">
+            <span *ngIf="todo.completed">✅</span>
+            <span *ngIf="!todo.completed">⏳</span>
+          </div>
+          <div class="todo-content">
+            <h3>{{ todo.title }}</h3>
+            <p>Status: <strong>{{ todo.completed ? 'Done' : 'Pending' }}</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="nav-btn" (click)="next()">➡</button>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="sidebar">
+  <!-- Tạo bài viết -->
+  <div class="section post-box">
+    <h3>Tạo bài viết</h3>
+    <textarea placeholder="Bạn đang nghĩ gì?"></textarea>
+    <button class="btn-post">Đăng</button>
+  </div>
+
+  <!-- Danh sách album -->
+  <div class="section albums">
+    <h3>Albums</h3>
+    <ul>
+      <li *ngFor="let album of albums">{{ album.title }}</li>
+    </ul>
+  </div>
+
+  <!-- Bình luận mới -->
+  <div class="section comments">
+    <h3>Bình luận mới</h3>
+    <ul>
+      <li *ngFor="let comment of comments">
+        <strong>{{ comment.name }}</strong><br />
+        <span>{{ comment.body }}</span>
+      </li>
+    </ul>
+  </div>
+</div>

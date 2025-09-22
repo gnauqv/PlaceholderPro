@@ -1,0 +1,16 @@
+<div class="posts-container">
+  <h2>Bài viết mới</h2>
+
+  <div class="posts-grid">
+    <div class="post-card" *ngFor="let post of visiblePosts"  (click)="goToDetail(post.id)">
+      <h3>{{ post.title }}</h3>
+       <p>{{ post.body | slice:0:80 }}...</p>
+    </div>
+  </div>
+
+  <div class="pagination-controls">
+    <button (click)="prevPage()" [disabled]="currentPage === 0">⟨</button>
+    <span>Trang {{ currentPage + 1 }} / {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages - 1">⟩</button>
+  </div>
+</div>
