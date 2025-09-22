@@ -4,16 +4,16 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./features/home/home').then(m => m.Home)
+      import('./pages/home/home').then(m => m.Home)
   },
   {
     path: 'posts',
     loadComponent: () =>
-      import('./features/posts/posts').then(m => m.PostsComponent)
+      import('./pages/posts/posts').then(m => m.PostsComponent)
   },
   {
     path: 'albums',
     loadComponent: () =>
-      import('./features/albums/albums').then(m => m.AlbumsComponent)
+      import('./pages/albums/albums').then(m => m.AlbumsComponent)
   }
 ];

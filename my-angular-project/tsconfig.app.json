@@ -7,7 +7,9 @@
     "types": []
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "../temp/home.module.ts",
+    "../temp/home-routing.module.ts"
   ],
   "exclude": [
     "src/**/*.spec.ts"

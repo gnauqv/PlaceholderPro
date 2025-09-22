@@ -18,7 +18,7 @@ export class PostsComponent implements OnInit {
   ngOnInit(): void {
     this.postsService.getPosts().subscribe({
       next: (data) => {
-        this.posts = data;
+        this.posts = data.slice(0,50);
         this.loading = false;
       },
       error: (err) => {

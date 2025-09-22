@@ -1,14 +1,20 @@
 <header class="header">
-  <div class="logo">LUXE</div>
-  <nav class="nav">
-    <a routerLink="/" routerLinkActive="active">Home</a>
-    <a routerLink="/posts" routerLinkActive="active">Posts</a>
-    <a routerLink="/albums" routerLinkActive="active">Albums</a>
-    <a routerLink="/portfolio" routerLinkActive="active">Portfolio</a>
-    <a routerLink="/about" routerLinkActive="active">About</a>
-    <a routerLink="/contact" routerLinkActive="active">Contact</a>
-  </nav>
+  <div class="logo">qdz</div>
 
-  <div class="srt-button">Get Started!</div>
+  <div class="header-right">
+    <div class="search-container">
+      <i class="fas fa-search"></i>
+      <input type="text" class="search-box" placeholder="Tìm kiếm..." />
+    </div>
+
+    <div class="user-menu">
+      <i class="fas fa-user-circle user-icon" (click)="togglePopup()"></i>
+
+      <div class="popup-menu" *ngIf="isPopupOpen">
+        <a routerLink="/profile">👤 Profile</a>
+        <a (click)="logout()">🚪 Logout</a>
+      </div>
+    </div>
+  </div>
 </header>
 <div class="spacingHeader"></div>
