@@ -1,26 +1,108 @@
-.post-detail {
-  margin: 20px auto;
-  max-width: 800px;
-  padding: 16px;
-  background: #fafafa;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+/* Wrapper */
+.post-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
 }
 
-.comments {
-  margin: 20px auto;
+/* Post Card */
+.post-card {
   max-width: 800px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
 }
 
-.comment {
-  background: #fff;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+.post-card:hover {
+  transform: translateY(-4px);
 }
-.comment .user {
-  font-weight: bold;
-  margin-bottom: 6px;
+
+.post-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+.post-body {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* Comments */
+.comments-section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.comments-title {
+  font-size: 22px;
+  font-weight: 600;
   color: #333;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.comment-card {
+  display: flex;
+  align-items: flex-start;
+  background: #fafafa;
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  transition: background 0.3s ease;
+}
+
+.comment-card:hover {
+  background: #f5f5f5;
+}
+
+/* Avatar */
+.avatar {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #f0b53b;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+}
+
+/* Comment Content */
+.comment-content {
+  flex: 1;
+}
+
+.comment-header {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.comment-user {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.comment-email {
+  font-size: 13px;
+  color: #888;
+}
+
+.comment-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+  margin: 0;
 }

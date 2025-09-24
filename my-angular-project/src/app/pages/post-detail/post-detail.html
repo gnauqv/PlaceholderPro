@@ -1,14 +1,21 @@
-<div class="post-detail" *ngIf="post">
-  <h2>{{ post.title }}</h2>
-  <p>{{ post.body }}</p>
-</div>
-
-<hr>
-
-<div class="comments">
-  <h3>💬 Comments ({{ comments.length }})</h3>
-  <div class="comment" *ngFor="let c of comments">
-    <p class="user">{{ c.name }} ({{ c.email }})</p>
-    <p>{{ c.body }}</p>
+<div class="post-wrapper" *ngIf="post">
+  <div class="post-card">
+    <h1 class="post-title">{{ post.title }}</h1>
+    <p class="post-body">{{ post.body }}</p>
   </div>
 </div>
+
+<section class="comments-section" *ngIf="comments.length">
+  <h2 class="comments-title">💬 {{ comments.length }} Comments</h2>
+
+  <div class="comment-card" *ngFor="let c of comments">
+    <div class="avatar">{{ c.name[0] | uppercase }}</div>
+    <div class="comment-content">
+      <div class="comment-header">
+        <span class="comment-user">{{ c.name }}</span>
+        <span class="comment-email">{{ c.email }}</span>
+      </div>
+      <p class="comment-text">{{ c.body }}</p>
+    </div>
+  </div>
+</section>

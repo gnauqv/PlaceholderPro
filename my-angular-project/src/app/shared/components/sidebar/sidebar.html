@@ -1,26 +1,48 @@
-<div class="sidebar">
-  <!-- Tạo bài viết -->
-  <div class="section post-box">
-    <h3>Tạo bài viết</h3>
-    <textarea placeholder="Bạn đang nghĩ gì?"></textarea>
-    <button class="btn-post">Đăng</button>
+<div class="sidebar" [class.closed]="isSidebarClosed">
+  <!-- Header -->
+  <div class="section sidebar-header">
+    <button class="toggle-sidebar" (click)="toggleSidebar()">
+      <i class="fas fa-bars"></i>
+    </button>
+    <h2 *ngIf="!isSidebarClosed">ODZ WEBSITE</h2>
   </div>
 
-  <!-- Danh sách album -->
-  <div class="section albums">
-    <h3>Albums</h3>
-    <ul>
+  <!-- Post Box -->
+  <div class="section post-box">
+    <h3 *ngIf="!isSidebarClosed">
+      <i class="fa-solid fa-plus"></i><span>Tạo bài viết</span>
+    </h3>
+    <textarea *ngIf="!isSidebarClosed" [(ngModel)]="postContent" placeholder="Bạn đang nghĩ gì?"></textarea>
+    <button class="btn-post" (click)="createPost()">
+      <i class="fas fa-paper-plane"></i>
+      <span *ngIf="!isSidebarClosed">Đăng</span>
+    </button>
+  </div>
+
+  <!-- New Routes -->
+  <div class="section albums" *ngIf="albums.length">
+    <h3><i class="fas fa-map"></i><span *ngIf="!isSidebarClosed">New Routes</span></h3>
+    <ul *ngIf="!isSidebarClosed">
+      <li>Posts (100)</li>
+      <li>Todos</li>
+    </ul>
+  </div>
+
+  <!-- Albums -->
+  <div class="section albums" *ngIf="albums.length">
+    <h3><i class="fas fa-images"></i><span *ngIf="!isSidebarClosed">New Albums</span></h3>
+    <ul *ngIf="!isSidebarClosed">
       <li *ngFor="let album of albums">{{ album.title }}</li>
     </ul>
   </div>
 
-  <!-- Bình luận mới -->
-  <div class="section comments">
-    <h3>Bình luận mới</h3>
-    <ul>
+  <!-- Comments -->
+  <div class="section comments" *ngIf="comments.length">
+    <h3><i class="fas fa-comments"></i><span *ngIf="!isSidebarClosed">Bình luận mới</span></h3>
+    <ul *ngIf="!isSidebarClosed">
       <li *ngFor="let comment of comments">
-        <strong>{{ comment.name }}</strong><br />
-        <span>{{ comment.body }}</span>
+        <strong>{{ comment.name }}</strong>
+        <p>{{ comment.body }}</p>
       </li>
     </ul>
   </div>

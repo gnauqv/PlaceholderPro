@@ -10,30 +10,37 @@ import { CommonModule } from '@angular/common';
 })
 export class TodosComponent implements OnInit {
   todos: any[] = [];
-  pagedTodos: any[][] = [];
-  currentPage: number = 0;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
     this.http.get<any[]>('https://jsonplaceholder.typicode.com/todos')
       .subscribe(data => {
-        this.todos = data.slice(0, 12); // lấy demo 12 todo
-        this.pagedTodos = this.chunkArray(this.todos, 2); // mỗi slide = 2 todo
+        this.todos = data.slice(0, 8); // demo 8 todo
       });
   }
 
-  chunkArray(arr: any[], size: number): any[][] {
-    return Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
-      arr.slice(i * size, i * size + size)
-    );
+  getRandomPriority(): string {
+    const priorities = ['high', 'medium', 'low'];
+    return priorities[Math.floor(Math.random() * priorities.length)];
   }
 
-  prev() {
-    if (this.currentPage > 0) this.currentPage--;
+  getRandomPriorityClass(): string {
+    return this.getRandomPriority();
   }
 
-  next() {
-    if (this.currentPage < this.pagedTodos.length - 1) this.currentPage++;
+  getRandomCategory(): string {
+    const cats = ['Work', 'Personal', 'Study', 'Health'];
+    return cats[Math.floor(Math.random() * cats.length)];
+  }
+
+  getRandomAuthor(): string {
+    const authors = ['Leanne Graham', 'Ervin Howell', 'Clementine Bauch', 'Patricia Lebsack'];
+    return authors[Math.floor(Math.random() * authors.length)];
+  }
+
+  getRandomDate(): string {
+    const date = new Date(2024, 0, Math.floor(Math.random() * 28) + 1);
+    return date.toISOString().split('T')[0];
   }
 }

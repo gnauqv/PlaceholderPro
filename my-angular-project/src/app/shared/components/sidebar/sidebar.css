@@ -1,20 +1,20 @@
 .sidebar {
-  position: sticky;
-  top: 80px;
-  right: 0;
-  min-width: 200px;
-  max-width: 300px;
+  width: 280px;
   height: calc(100vh - 80px);
-  background-color: #1a1a1a;
+  background: #1a1a1a;
   color: #e1e1e1;
   padding: 20px;
   overflow-y: auto;
-  box-shadow: -2px 0 8px rgba(0,0,0,0.3);
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);
   font-family: 'Helvetica Neue', sans-serif;
+  transition: width 0.3s, padding 0.5s;
+  position: relative;
+}
 
-   /* ẩn thanh cuộn */
-  scrollbar-width: none; 
-  -ms-overflow-style: none;
+.sidebar.closed {
+  width: 40px;
+  padding: 20px 6px;
+  text-align: center;
 }
 
 .sidebar::-webkit-scrollbar {
@@ -22,37 +22,88 @@
 }
 
 .section {
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
-.section h3 {
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10%;
+  color: #f0b53b;
+  
+}
+
+.toggle-sidebar {
+  background: #f0b53b;
+  color: #1a1a1a;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   font-size: 16px;
-  margin-bottom: 10px;
+  transition: background 0.2s;
+}
+
+.toggle-sidebar:hover {
+  background: #ffcc4d;
+}
+
+h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
   color: #f0b53b;
   border-bottom: 1px solid #333;
-  padding-bottom: 5px;
+  padding-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.sidebar.closed h3 {
+  justify-content: center;
+  border-bottom: none;
+  margin-bottom: 20px;
 }
 
 .post-box textarea {
-  width: 90%;
-  height: 60px;
-  background-color: #2c3e50;
+  width: 95%;
+  height: 50px;
+  background: #2c3e50;
   border: none;
   border-radius: 6px;
   padding: 10px;
   color: #fff;
   resize: none;
   margin-bottom: 10px;
+  font-size: 14px;
 }
 
 .btn-post {
-  background-color: #f0b53b;
+  background: #f0b53b;
   border: none;
   padding: 8px 16px;
   border-radius: 6px;
   color: #1a1a1a;
   cursor: pointer;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 0.2s;
+}
+
+.btn-post:hover {
+  background: #ffcc4d;
+}
+
+.sidebar.closed .btn-post {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
 }
 
 .albums ul,
@@ -67,4 +118,30 @@
   margin-bottom: 10px;
   font-size: 14px;
   line-height: 1.4;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #2c2c2c;
+}
+
+.albums li:hover,
+.comments li:hover {
+  border: 1px solid #4c4b4b;
+  transition: all 1s ease;
+}
+
+.comments p {
+  margin: 2px 0 0;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 240px;
+    height: 100vh;
+    top: 0;
+    z-index: 999;
+  }
+
+  .sidebar.closed {
+    width: 60px;
+  }
 }

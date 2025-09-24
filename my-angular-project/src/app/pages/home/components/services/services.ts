@@ -10,11 +10,8 @@ import { CommonModule } from '@angular/common';
 })
 export class ServicesComponent {
   services = [
-    { icon: '🎨', title: 'Creative Design', description: 'Stunning visual experiences...' },
-    { icon: '💻', title: 'Development', description: 'Cutting-edge technology solutions...' },
-    { icon: '⚡', title: 'Performance', description: 'Lightning-fast implementations...' },
-    { icon: '🔒', title: 'Security', description: 'Enterprise-grade protection...' },
-    { icon: '🌍', title: 'Global Reach', description: 'Solutions designed to perform...' },
-    { icon: '🚀', title: 'Innovation', description: 'Forward-thinking approaches...' }
+    { icon: '📖', title: 'Posts', description: 'Latest blog posts and articles', items: 100 },
+    { icon: '🖼️', title: 'Albums', description: 'Photo galleries and collections', items: 100 },
+    { icon: '👥', title: 'Users', description: 'Community members and authors', items: 10 },
   ];
 }

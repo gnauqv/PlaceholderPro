@@ -1,39 +1,119 @@
-.hero {
+:host { display: block; }
+
+/* nếu bạn có sidebar fixed, đặt biến này (match width của sidebar) */
+/* :root { --sidebar-width: 72px; } */
+
+/*------------------- Main container -------------------*/
+.hero-carousel {
   position: relative;
-  height: 200px;
-  /* background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.2)),
-    url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover no-repeat; */
-  background: linear-gradient(to right, #000000, #2a4855);
+  /* đẩy main content sang phải nếu sidebar fixed */
+  /* margin-left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width)); */
+  height: 240px;
+  overflow: hidden;
+  background: #0f0f0f;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+/*------------------- Slides container -------------------*/
+.carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform 900ms cubic-bezier(.22,.9,.35,1);
+  will-change: transform;
+}
+
+/* Slide item */
+.carousel-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  height: 100%;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  width: 100%;
+  text-align: center;
 }
 
-.overlay {
+/* ảnh fill toàn vùng slide */
+.carousel-slide img {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* quan trọng: cover toàn vùng, không để lộ nền */
+  object-position: center;
+  display: block;
+  filter: saturate(.95) contrast(.95);
 }
 
+/* tối ưu readability */
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.45));
+  z-index: 1;
+}
+
+/* nội dung nằm trên overlay */
 .content {
   position: relative;
-  text-align: center;
-  padding: 0 20px;
+  z-index: 2;
+  padding: 12px 24px;
+  max-width: 980px;
 }
 
-h1 {
-  font-size: 28px;
-  font-weight: 600;
+.content h1 {
+  font-size: 34px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
   margin-bottom: 8px;
 }
-
-h1 span {
-  color: #f0b53b;
+.content h1 span { 
+  background: linear-gradient(to right,#f0b53b,#fceabb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+.content p { font-size: 16px; opacity:.95; margin-bottom:10px; }
+.content .cta { color:#f0b53b; text-decoration:none; font-weight:600; }
 
-p {
-  font-size: 14px;
-  color: #e1e1e1;
+/* ------------------- indicators ------------------- */
+.carousel-indicators {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 3;
+}
+.dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  border: none; cursor: pointer;
+}
+.dot.active { background: #f0b53b; }
+
+/* ------------------- arrows ------------------- */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  border: none;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  padding: 8px 12px;
+  font-size: 22px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.arrow.prev { left: 12px; }
+.arrow.next { right: 12px; }
+
+/* small screens */
+@media (max-width: 720px) {
+  .hero-carousel { height: 220px; margin-left: calc(var(--sidebar-width) * 0.8); }
+  .content h1 { font-size: 20px; }
 }

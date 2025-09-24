@@ -1,49 +1,110 @@
 .services-section {
-  padding: 80px 40px;
-  text-align: center;
-  background: #d1d5db; /* xám nhạt */
+  padding: 60px 20px;
+  background: #0f0f0f;
+  color: #fff;
+}
+
+.services-section .header {
+  text-align: left;
+  margin-bottom: 30px;
 }
 
 .services-section h2 {
-  font-size: 2.2rem;
-  margin-bottom: 10px;
+  font-size: 1.6rem;
+  font-weight: 600;
 }
 
-.services-section .subtitle {
-  max-width: 700px;
-  margin: 0 auto 50px;
-  color: #6b7280;
-  font-size: 1.1rem;
+.services-section p {
+  color: #aaa;
+  font-size: 0.95rem;
+  margin-top: 5px;
 }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
 }
 
 .service-card {
-  background: #374151; /* xám đậm */
-  color: white;
-  padding: 30px 20px;
+  background: #111827;
   border-radius: 12px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 15px rgba(0,0,0,0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
 }
 
 .icon {
-  background: #4b5563;
-  color: #d1b94c; /* vàng nhạt */
-  width: 50px;
-  height: 50px;
-  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 20px;
   font-size: 1.4rem;
+  margin-bottom: 15px;
+}
+
+.info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.info p {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge {
+  background: #222;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ddd;
+}
+
+.explore {
+  color: #bbb;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.explore:hover {
+  color: #fff;
+}
+
+.view-all {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.btn-view {
+  background: #1f2937;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn-view:hover {
+  background: #374151;
 }
