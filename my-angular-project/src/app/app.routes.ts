@@ -11,15 +11,19 @@ import { AlbumsComponent } from './pages/albums/albums';
 
 // import { TodosComponent } from './pages/todos/todos';
 
-import { Dashboard } from './admin/dashboard/dashboard';
-import { Users } from './admin/users/users';
-import { Posts } from './admin/posts/posts';
+import { Dashboard } from './admin/pages/dashboard/dashboard';
+import { AdminUsers } from './admin/pages/users/users';
+import { AdminPosts } from './admin/pages/posts/posts';
 import { AlbumDetailComponent } from './pages/album-detail/album-detail';
 import { TodosComponent } from './pages/todos/todos';
 import { UsersComponent } from './pages/users/users';
 import { ProfileComponent } from './pages/profile/profile';
 import { ContactPage } from './pages/contact/contact';
 import { AboutPage } from './pages/about/about';
+import { AdminAlbums } from './admin/pages/albums/albums';
+import { AdminTodos } from './admin/pages/todos/todos';
+import { AdminComments } from './admin/pages/comments/comments';
+import { AdminLogin } from './admin/pages/login/login';
 
 export const routes: Routes = [
   {
@@ -46,8 +50,12 @@ export const routes: Routes = [
     component: AdminLayout,
     children: [
       { path: 'dashboard', component: Dashboard },
-      { path: 'users', component: Users },
-      { path: 'posts', component: Posts },
+      { path: 'users', component: AdminUsers },
+      { path: 'posts', component: AdminPosts },
+      { path: 'albums', component: AdminAlbums },
+      { path: 'todos', component: AdminTodos },
+      { path: 'comments', component: AdminComments },
+      { path: 'login', component: AdminLogin },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   }

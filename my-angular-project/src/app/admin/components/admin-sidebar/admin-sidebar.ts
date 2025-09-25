@@ -1,14 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-admin-sidebar',
-  imports: [ RouterLink, CommonModule ],
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive, CommonModule],
   templateUrl: './admin-sidebar.html',
-  styleUrl: './admin-sidebar.css'
+  styleUrls: ['./admin-sidebar.css']
 })
 export class AdminSidebar {
+  constructor(private router: Router) {}
 
+  logout() {
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
+  }
 }

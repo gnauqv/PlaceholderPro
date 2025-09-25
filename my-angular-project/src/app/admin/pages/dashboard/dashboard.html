@@ -1,0 +1,34 @@
+<h2 class="title">📊 Dashboard</h2>
+
+<div class="dashboard-grid">
+  <div class="card highlight">
+    <h3>Total Users</h3>
+    <p>{{ totalUsers }}</p>
+  </div>
+  <div class="card highlight">
+    <h3>Total Posts</h3>
+    <p>{{ totalPosts }}</p>
+  </div>
+  <div class="card highlight">
+    <h3>Total Todos</h3>
+    <p>{{ totalTodos }}</p>
+  </div>
+</div>
+
+<div class="charts-grid">
+  <div class="chart-card">
+    <h3>Posts per User</h3>
+    <canvas baseChart 
+      [data]="postsChartData"
+      [type]="'bar'">
+    </canvas>
+  </div>
+
+  <div class="chart-card">
+    <h3>Todos Status</h3>
+    <canvas baseChart 
+      [data]="todosChartData"
+      [type]="'doughnut'">
+    </canvas>
+  </div>
+</div>
