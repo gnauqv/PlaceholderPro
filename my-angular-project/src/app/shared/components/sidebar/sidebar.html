@@ -1,48 +1,41 @@
 <div class="sidebar" [class.closed]="isSidebarClosed">
   <!-- Header -->
-  <div class="section sidebar-header">
+  <div class="sidebar-header">
     <button class="toggle-sidebar" (click)="toggleSidebar()">
       <i class="fas fa-bars"></i>
     </button>
-    <h2 *ngIf="!isSidebarClosed">ODZ WEBSITE</h2>
+    <a routerLink="/" class="logo" *ngIf="!isSidebarClosed">
+      <i class="fas fa-home"></i>
+      <span>NewsAPI</span>
+    </a>
   </div>
 
-  <!-- Post Box -->
-  <div class="section post-box">
-    <h3 *ngIf="!isSidebarClosed">
-      <i class="fa-solid fa-plus"></i><span>Tạo bài viết</span>
-    </h3>
-    <textarea *ngIf="!isSidebarClosed" [(ngModel)]="postContent" placeholder="Bạn đang nghĩ gì?"></textarea>
-    <button class="btn-post" (click)="createPost()">
-      <i class="fas fa-paper-plane"></i>
-      <span *ngIf="!isSidebarClosed">Đăng</span>
-    </button>
-  </div>
+  <!-- Main Menu -->
+  <nav class="menu">
+    <a routerLink="/" class="menu-item">
+      <i class="fas fa-house"></i>
+      <span *ngIf="!isSidebarClosed">Home</span>
+    </a>
+    <a routerLink="/resources" class="menu-item">
+      <i class="fas fa-database"></i>
+      <span *ngIf="!isSidebarClosed">Resources</span>
+    </a>
+    <a routerLink="/routes" class="menu-item">
+      <i class="fas fa-diagram-project"></i>
+      <span *ngIf="!isSidebarClosed">Routes</span>
+    </a>
+  </nav>
 
-  <!-- New Routes -->
-  <div class="section albums" *ngIf="albums.length">
-    <h3><i class="fas fa-map"></i><span *ngIf="!isSidebarClosed">New Routes</span></h3>
-    <ul *ngIf="!isSidebarClosed">
-      <li>Posts (100)</li>
-      <li>Todos</li>
-    </ul>
-  </div>
-
-  <!-- Albums -->
-  <div class="section albums" *ngIf="albums.length">
-    <h3><i class="fas fa-images"></i><span *ngIf="!isSidebarClosed">New Albums</span></h3>
-    <ul *ngIf="!isSidebarClosed">
-      <li *ngFor="let album of albums">{{ album.title }}</li>
-    </ul>
-  </div>
-
-  <!-- Comments -->
-  <div class="section comments" *ngIf="comments.length">
-    <h3><i class="fas fa-comments"></i><span *ngIf="!isSidebarClosed">Bình luận mới</span></h3>
-    <ul *ngIf="!isSidebarClosed">
-      <li *ngFor="let comment of comments">
-        <strong>{{ comment.name }}</strong>
-        <p>{{ comment.body }}</p>
+  <!-- Resources -->
+  <div class="resources">
+    <h4 *ngIf="!isSidebarClosed">Resources</h4>
+    <ul>
+      <li *ngFor="let r of resources">
+        <a [routerLink]="r.link">
+          <i [class]="r.icon"></i>
+          <span *ngIf="!isSidebarClosed">{{ r.name }}</span>
+          <span class="badge">{{ r.count }}</span>
+        </a>
       </li>
     </ul>
   </div>

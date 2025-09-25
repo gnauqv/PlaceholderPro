@@ -1,11 +1,60 @@
-<div class="albums-container">
-  <h2>Albums</h2>
+<div class="albums-page">
+  <div class="albums-header">
+    <h1>Albums</h1>
+    <p>Explore our collection of {{ albums.length }} photo albums</p>
+    <button routerLink="/" class="back-home">Back to Home</button>
+  </div>
 
-  <div *ngIf="loading">Loading albums...</div>
+  <!-- Search + View Toggle -->
+  <div class="albums-controls">
+    <div class="search-bar">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search albums..." [(ngModel)]="searchTerm" />
+    </div>
 
-  <ul *ngIf="!loading">
-    <li *ngFor="let album of albums">
-      <strong>{{ album.id }}.</strong> {{ album.title }}
-    </li>
-  </ul>
+    <div class="view-toggle">
+      <button [class.active]="viewMode === 'grid'" (click)="viewMode = 'grid'">
+        <i class="fas fa-th"></i> Grid
+      </button>
+      <button [class.active]="viewMode === 'list'" (click)="viewMode = 'list'">
+        <i class="fas fa-list"></i> List
+      </button>
+    </div>
+  </div>
+
+  <!-- Album list -->
+  <div class="albums-list" [ngClass]="viewMode">
+    <div class="album-card" *ngFor="let album of filteredAlbums()">
+      <a routerLink="/album-detail">
+        <div class="album-cover">
+          <img [src]="album.cover" [alt]="album.title" />
+          <span class="photo-count">{{ album.photoCount }} photos</span>
+        </div>
+        <div class="album-info">
+          <h3>{{ album.title }}</h3>
+          <p>{{ album.description }}</p>
+          <div class="album-meta">
+            <span><i class="fas fa-user"></i> {{ album.author }}</span>
+            <span><i class="fas fa-calendar"></i> {{ album.date }}</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="albums-stats">
+    <div class="stat">
+      <h2>{{ albums.length }}</h2>
+      <p>Total Albums</p>
+    </div>
+    <div class="stat">
+      <h2>{{ totalPhotos() }}</h2>
+      <p>Total Photos</p>
+    </div>
+    <div class="stat">
+      <h2>{{ averagePhotos() }}</h2>
+      <p>Avg. Photos per Album</p>
+    </div>
+  </div>
 </div>

@@ -138,3 +138,20 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+.auth-btn {
+  background: transparent;
+  border: 1px solid #c4a03c;
+  color: #c4a03c;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-left: 8px;
+}
+
+.auth-btn:hover {
+  background: #c4a03c;
+  color: #000;
+}

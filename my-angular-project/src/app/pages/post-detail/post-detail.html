@@ -1,21 +1,84 @@
-<div class="post-wrapper" *ngIf="post">
-  <div class="post-card">
-    <h1 class="post-title">{{ post.title }}</h1>
-    <p class="post-body">{{ post.body }}</p>
-  </div>
-</div>
-
-<section class="comments-section" *ngIf="comments.length">
-  <h2 class="comments-title">💬 {{ comments.length }} Comments</h2>
-
-  <div class="comment-card" *ngFor="let c of comments">
-    <div class="avatar">{{ c.name[0] | uppercase }}</div>
-    <div class="comment-content">
-      <div class="comment-header">
-        <span class="comment-user">{{ c.name }}</span>
-        <span class="comment-email">{{ c.email }}</span>
-      </div>
-      <p class="comment-text">{{ c.body }}</p>
+<div class="post-detail-wrapper" *ngIf="post">
+  <!-- MAIN CONTENT -->
+  <section class="post-detail">
+    <!-- Tags -->
+    <div class="tags">
+      <span class="tag">Technology</span>
+      <span class="tag">#JavaScript</span>
+      <span class="tag">#Web Development</span>
     </div>
-  </div>
-</section>
+
+    <!-- Title -->
+    <h1>{{ post.title }}</h1>
+
+    <!-- Meta -->
+    <div class="meta">
+      <span class="author">👤 Leanne Graham</span>
+      <span class="date">📅 2024-01-15</span>
+      <span>💬 {{ comments.length }} comments</span>
+      <span>❤️ 42 likes</span>
+    </div>
+
+    <!-- Content -->
+    <article class="content">
+      <p>{{ post.body }}</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore...</p>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium...</p>
+    </article>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button>❤️ Like (42)</button>
+      <button>💾 Save</button>
+      <button>🔗 Share</button>
+      <button>Edit</button>
+    </div>
+
+    <!-- Comments -->
+    <div class="comments">
+      <h3>Comments ({{ comments.length }})</h3>
+      <div *ngFor="let c of comments" class="comment-card">
+        <div class="avatar">{{ c.name[0] }}</div>
+        <div class="comment-body">
+          <p class="author">{{ c.name }} <span class="date">2024-01-16</span></p>
+          <p>{{ c.body }}</p>
+          <span class="likes">❤️ {{ getRandomLikes () }}</span>
+          <!-- <span class="likes">❤️ {{ Math.floor(Math.random()*5)+1 }}</span> -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="card author-card">
+      <h4>About the Author</h4>
+      <div class="author-info">
+        <div class="avatar">L</div>
+        <div>
+          <p class="name">Leanne Graham</p>
+          <p class="email">leanne@example.com</p>
+        </div>
+      </div>
+      <button>View Profile</button>
+    </div>
+
+    <div class="card related-posts">
+      <h4>Related Posts</h4>
+      <ul>
+        <li *ngFor="let p of relatedPosts">
+          <a>{{ p.title }}</a>
+          <span class="tag">Technology</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card statistics">
+      <h4>Post Statistics</h4>
+      <p>👀 Views: 156</p>
+      <p>❤️ Likes: 42</p>
+      <p>💬 Comments: {{ comments.length }}</p>
+      <p>📅 Last Updated: 2024-01-16</p>
+    </div>
+  </aside>
+</div>

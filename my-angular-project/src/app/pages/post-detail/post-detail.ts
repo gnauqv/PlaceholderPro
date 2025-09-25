@@ -5,25 +5,32 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-post-detail',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './post-detail.html',
-  imports: [ CommonModule ],
   styleUrls: ['./post-detail.css']
 })
 export class PostDetailComponent implements OnInit {
   post: any;
   comments: any[] = [];
+  relatedPosts: any[] = [];
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
 
-    // Lấy post gốc
-    this.http.get<any>(`https://jsonplaceholder.typicode.com/posts/${id}`)
-      .subscribe(data => this.post = data);
+    this.http.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .subscribe(post => this.post = post);
 
-    // Lấy comments theo postId
-    this.http.get<any[]>(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
-      .subscribe(data => this.comments = data);
+    this.http.get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
+      .subscribe((comments: any) => this.comments = comments);
+
+    this.http.get(`https://jsonplaceholder.typicode.com/posts?_limit=3`)
+      .subscribe((posts: any) => this.relatedPosts = posts);
+  }
+
+  getRandomLikes(): number {
+    return  Math.floor(Math.random()*20)+1;
   }
 }

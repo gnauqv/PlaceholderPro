@@ -1,40 +1,27 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './sidebar.html',
   styleUrls: ['./sidebar.css']
 })
 export class Sidebar {
-  albums: any[] = [];
-  comments: any[] = [];
-  postContent = '';
   isSidebarClosed = false;
 
-  constructor(private http: HttpClient) {
-    this.loadData();
-  }
-
-  loadData() {
-    this.http.get<any[]>('https://jsonplaceholder.typicode.com/albums?_limit=5')
-      .subscribe(data => this.albums = data);
-
-    this.http.get<any[]>('https://jsonplaceholder.typicode.com/comments?_limit=5')
-      .subscribe(data => this.comments = data);
-  }
+  resources = [
+    { name: 'Posts', count: 100, icon: 'fas fa-book', link: '/posts' },
+    // { name: 'Comments', count: 500, icon: 'fas fa-comments', link: '' },
+    { name: 'Albums', count: 100, icon: 'fas fa-images', link: '/albums' },
+    // { name: 'Photos', count: 5000, icon: 'fas fa-photo-film', link: '' },
+    { name: 'Todos', count: 200, icon: 'fas fa-check-square', link: '/todos' },
+    { name: 'Users', count: 10, icon: 'fas fa-users', link: '/users' }
+  ];
 
   toggleSidebar() {
     this.isSidebarClosed = !this.isSidebarClosed;
-  }
-
-  createPost() {
-    if (!this.postContent.trim()) return;
-    console.log('Post created:', this.postContent);
-    this.postContent = '';
   }
 }
