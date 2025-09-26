@@ -1,93 +1,96 @@
+:host {
+  --sidebar-bg: #111;
+  --sidebar-text: #b6b6b6;
+  --sidebar-hover: #1f1f1f;
+  --sidebar-accent: #f0b53b;
+}
+
+/* Reset */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Sidebar */
 .sidebar {
   width: 200px;
   height: 100vh;
-  background: #111;
-  color: #ddd;
-  padding: 15px;
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  padding: 20px;
   transition: width 0.3s ease;
-  font-family: 'Helvetica Neue', sans-serif;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #444;
 }
 
 .sidebar.closed {
-  width: 70px;
-  text-align: center;
+  width: 60px;
 }
 
+/* Sections */
+.sidebar > * {
+  border-bottom: 1px solid #444;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+/* Header */
 .sidebar-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 25px;
-  color: #f0b53b;
+  gap: 16px;
+  text-transform: uppercase;
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  color: var(--sidebar-accent);
   font-weight: 600;
   font-size: 18px;
+  display: flex;
+  align-items: center;
 }
 
 .toggle-sidebar {
-  background: #f0b53b;
+  background: var(--sidebar-accent);
   border: none;
   padding: 6px 10px;
   border-radius: 6px;
   cursor: pointer;
 }
 
-.menu {
-  margin-bottom: 25px;
-}
-
+/* ---------------- Menu + Resources chung ---------------- */
 .menu-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 12px;
-  border-radius: 8px;
-  color: #ddd;
-  text-decoration: none;
-  transition: background 0.2s;
+  gap: 15px;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 15px;
+  color: var(--sidebar-text);
+  transition: background 0.2s, color 0.2s;
 }
 
-.menu-item:hover {
-  background: #1f1f1f;
+.menu-item:hover,
+.menu-item.active {
+  background: var(--sidebar-hover);
   color: #fff;
 }
 
+/* Resources */
 .resources h4 {
   font-size: 14px;
   color: #aaa;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .resources ul {
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-.resources li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-size: 14px;
-  transition: background 0.2s;
-}
-
-.resources li:hover {
-  background: #1f1f1f;
-}
-
-.badge {
-  background: #2c2c2c;
-  padding: 2px 8px;
-  border-radius: 6px;
-  font-size: 12px;
-  color: #bbb;
 }

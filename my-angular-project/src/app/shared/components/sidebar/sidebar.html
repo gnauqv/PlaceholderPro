@@ -5,25 +5,32 @@
       <i class="fas fa-bars"></i>
     </button>
     <a routerLink="/" class="logo" *ngIf="!isSidebarClosed">
-      <i class="fas fa-home"></i>
-      <span>NewsAPI</span>
+      <span>QDZ api</span>
     </a>
   </div>
 
   <!-- Main Menu -->
   <nav class="menu">
-    <a routerLink="/" class="menu-item">
-      <i class="fas fa-house"></i>
-      <span *ngIf="!isSidebarClosed">Home</span>
-    </a>
-    <a routerLink="/resources" class="menu-item">
-      <i class="fas fa-database"></i>
-      <span *ngIf="!isSidebarClosed">Resources</span>
-    </a>
-    <a routerLink="/routes" class="menu-item">
-      <i class="fas fa-diagram-project"></i>
-      <span *ngIf="!isSidebarClosed">Routes</span>
-    </a>
+    <ul>
+      <li>
+        <a routerLink="/" routerLinkActive="active" class="menu-item">
+          <i class="fas fa-house"></i>
+          <span *ngIf="!isSidebarClosed">Home</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/resources" routerLinkActive="active" class="menu-item">
+          <i class="fas fa-database"></i>
+          <span *ngIf="!isSidebarClosed">Resources</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/routes" routerLinkActive="active" class="menu-item">
+          <i class="fas fa-diagram-project"></i>
+          <span *ngIf="!isSidebarClosed">Routes</span>
+        </a>
+      </li>
+    </ul>
   </nav>
 
   <!-- Resources -->
@@ -31,10 +38,9 @@
     <h4 *ngIf="!isSidebarClosed">Resources</h4>
     <ul>
       <li *ngFor="let r of resources">
-        <a [routerLink]="r.link">
+        <a [routerLink]="r.link" routerLinkActive="active" class="menu-item">
           <i [class]="r.icon"></i>
           <span *ngIf="!isSidebarClosed">{{ r.name }}</span>
-          <span class="badge">{{ r.count }}</span>
         </a>
       </li>
     </ul>

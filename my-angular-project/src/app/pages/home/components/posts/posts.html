@@ -1,31 +1,22 @@
 <div class="posts-container">
   <div class="container-title">
     <h2>Bài viết mới</h2>
-    <a routerLink="/posts">
-      <h5>Xem tất cả >></h5>
-    </a>
+    <a routerLink="/posts" class="view-all">Xem tất cả >></a>
   </div>
 
   <div class="posts-grid">
     <div class="post-card" *ngFor="let post of visiblePosts" (click)="goToDetail(post.id)">
-      <!-- Category giả lập (random cho demo) -->
-      <span class="category">{{ getRandomCategory () }}</span>
-      <!-- <span class="category">{{ getAuthorName(post.userId) }}</span> -->
+      <span class="category">{{ getRandomCategory() }}</span>
 
-      <!-- Title & desc -->
       <h3>{{ post.title | slice:0:40 | capitalize }}...</h3>
       <p>{{ post.body | slice:0:100 | capitalize }}...</p>
 
-      <!-- Footer -->
       <div class="post-footer">
         <div class="author-info">
           <img [src]="getRandomAvatar()" alt="author" class="avatar" />
-          <!-- <i class="fa-regular fa-user"></i> -->
           <span>{{ getRandomAuthor() }}</span>
         </div>
         <div class="meta">
-          <!-- <i class="fa-regular fa-thumbs-up"></i>
-          <span>{{ getRandomLikes() }} likes</span> -->
           <div class="meta-item">
             <i class="fa-regular fa-comment"></i>
             <span>{{ getRandomComments() }} comments</span>
@@ -34,7 +25,6 @@
             <i class="fa-regular fa-calendar"></i>
             <span>{{ getRandomPostTime() }}</span>
           </div>
-          <!-- <span>{{ getRandomDate() }}</span> -->
         </div>
       </div>
     </div>

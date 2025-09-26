@@ -1,4 +1,10 @@
-.home-content {
-    /* width: 100vw; */
-    /* padding: 10px; */
+.home-content > * {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid #434343;
+}
+
+.home-content > *:first-child, .home-content > *:last-child {
+    border-bottom: none;
+
 }

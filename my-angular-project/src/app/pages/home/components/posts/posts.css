@@ -1,33 +1,54 @@
+:host {
+  --bg-dark: #0f0f0f;
+  --bg-hover: #1a1a1a;
+  --border: #464646;
+  --text-light: #fff;
+  --text-muted: #aaa;
+  --text-secondary: #ccc;
+  --accent: #f0b53b;
+}
+
 /* Container */
 .posts-container {
-  position: relative;
-  padding: 30px 20px 80px;
   margin: 10px auto;
-  color: #fff;
-  border-bottom: 1px solid #615f5f;
+  color: var(--text-light);
+}
+
+.posts-container>* {
+  margin-bottom: 35px;
 }
 
 .container-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
 }
 
-/* Post grid */
+.view-all {
+  opacity: 0.7;
+  color: var(--accent);
+  transition: opacity 0.25s;
+}
+
+.view-all:hover {
+  opacity: 0.9;
+}
+
+/* Grid */
 .posts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
 
+/* Card */
 .post-card {
-  background: #0f0f0f;
+  background: var(--bg-dark);
   padding: 20px;
-  border: 1px solid #464646;
+  border: 1px solid var(--border);
   border-radius: 14px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, background 0.3s ease;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -35,11 +56,11 @@
 }
 
 .post-card:hover {
-  background-color: #1a1a1a;
+  background: var(--bg-hover);
   transform: translateY(-6px);
 }
 
-/* Category tag */
+/* Category */
 .category {
   display: inline-block;
   font-size: 12px;
@@ -51,16 +72,16 @@
   color: #bbb;
 }
 
-/* Title & text */
+/* Text */
 .post-card h3 {
   font-size: 18px;
   margin: 5px 0;
-  color: #fff;
+  color: var(--text-light);
 }
 
 .post-card p {
   font-size: 14px;
-  color: #aaa;
+  color: var(--text-muted);
   margin-bottom: 15px;
 }
 
@@ -70,17 +91,16 @@
   justify-content: space-between;
   align-items: center;
   font-size: 13px;
-  color: #ccc;
+  color: var(--text-secondary);
 }
 
 .author-info {
   display: flex;
   align-items: center;
   gap: 6px;
-  width: 10px; /* Giới hạn kích thước author name */
 }
 
-.author-info .avatar {
+.avatar {
   width: 28px;
   height: 28px;
   border-radius: 50%;
@@ -88,16 +108,11 @@
   border: 1px solid #444;
 }
 
-.meta {
-  /* display: flex; */
-  /* align-items: center; */
-  /* gap: 10px; */
-}
-
 .meta-item {
   display: flex;
-  margin-top: 2px;
+  align-items: center;
   gap: 5px;
+  margin-top: 2px;
 }
 
 /* Pagination */
@@ -107,7 +122,7 @@
   justify-content: center;
   gap: 12px;
   align-items: center;
-  color: #fff;
+  color: var(--text-light);
 }
 
 .pagination-controls button {
@@ -115,14 +130,19 @@
   font-size: 20px;
   border: none;
   border-radius: 8px;
-  background: #111;
-  color: rgb(201, 201, 201);
+  background: var(--bg-dark);
+  color: var(--text-secondary);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: color 0.3s;
 }
 
-.pagination-controls button:hover {
-  color: #fff;
+.pagination-controls button:hover:not(:disabled) {
+  color: var(--text-light);
+}
+
+.pagination-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* Responsive */
