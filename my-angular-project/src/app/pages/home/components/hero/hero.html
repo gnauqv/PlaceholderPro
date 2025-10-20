@@ -1,7 +1,6 @@
 <section class="hero-carousel">
   <!-- Caroseul track -->
-  <div class="carousel-track"
-       [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+  <div class="carousel-track" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
     <div class="carousel-slide" *ngFor="let s of slides; let i = index">
       <!-- ảnh dùng <img> để tránh layout lỗi, object-fit cover -->
       <img [src]="s.img" alt="{{ s.title }}" loading="lazy" />
@@ -17,11 +16,7 @@
 
   <!-- Indicators -->
   <div class="carousel-indicators">
-    <button
-      class="dot"
-      *ngFor="let _ of slides; let i = index"
-      [class.active]="i === currentIndex"
-      (click)="goTo(i)"
+    <button class="dot" *ngFor="let _ of slides; let i = index" [class.active]="i === currentIndex" (click)="goTo(i)"
       aria-label="Go to slide {{ i + 1 }}"></button>
   </div>
 

@@ -3,21 +3,12 @@
   --sidebar-text: #b6b6b6;
   --sidebar-hover: #1f1f1f;
   --sidebar-accent: #f0b53b;
-}
-
-/* Reset */
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-ul {
-  list-style: none;
+  --sidebar-border: #2c2c2c;
 }
 
 /* Sidebar */
 .sidebar {
-  width: 200px;
+  width: 180px;
   height: 100vh;
   background: var(--sidebar-bg);
   color: var(--sidebar-text);
@@ -26,24 +17,26 @@ ul {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid #444;
+  border-right: 1px solid var(--sidebar-border);
+  box-shadow: 2px 0 51px rgba(98, 98, 98, 0.1);
 }
 
 .sidebar.closed {
-  width: 60px;
+  width: 45px;
 }
 
 /* Sections */
-.sidebar > * {
-  border-bottom: 1px solid #444;
+.sidebar>* {
+  border-bottom: 1px solid var(--sidebar-border);
   padding-bottom: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 /* Header */
 .sidebar-header {
   display: flex;
   align-items: center;
+  justify-content: space-around;
   gap: 16px;
   text-transform: uppercase;
 }
@@ -64,7 +57,106 @@ ul {
   cursor: pointer;
 }
 
-/* ---------------- Menu + Resources chung ---------------- */
+/* ---------------- Thông tin người dùng ---------------- */
+.profile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--sidebar-border);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.user-info:hover {
+  background: var(--sidebar-hover);
+  border-radius: 8px;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--sidebar-accent);
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-name {
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+.user-email {
+  font-size: 0.8rem;
+  color: #b6b6b6;
+  margin: 0;
+}
+
+/* Dropdown menu */
+.user-dropdown {
+  position: absolute;
+  bottom: -130px;
+  left: 15px;
+  background: #1b1b1b;
+  border: 1px solid var(--sidebar-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  width: 150px;
+  display: none;
+  flex-direction: column;
+  z-index: 99;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.user-dropdown.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.user-dropdown a {
+  padding: 10px 12px;
+  color: var(--sidebar-text);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.user-dropdown a:hover {
+  background: var(--sidebar-hover);
+  color: #fff;
+  border-left: 3px solid var(--sidebar-accent);
+}
+
+/* Khi sidebar đóng */
+.sidebar.closed .profile {
+  justify-content: center;
+  padding: 0.75rem 0;
+}
+
+.sidebar.closed .user-details,
+.sidebar.closed .user-dropdown {
+  display: none !important;
+}
+
+/* ---------------- Menu chung ---------------- */
 .menu-item {
   display: flex;
   align-items: center;
@@ -80,17 +172,4 @@ ul {
 .menu-item.active {
   background: var(--sidebar-hover);
   color: #fff;
-}
-
-/* Resources */
-.resources h4 {
-  font-size: 14px;
-  color: #aaa;
-  margin-bottom: 8px;
-}
-
-.resources ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
 }

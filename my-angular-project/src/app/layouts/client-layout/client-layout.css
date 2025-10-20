@@ -8,7 +8,7 @@ html {
   display: flex;
   width: 100%;
   flex: 1;
-  height: calc(100vh - var(--header-height, 70px));
+  height: calc(100vh - 80px);
   overflow: hidden;
   /* tránh tràn ngang */
 }
@@ -31,7 +31,7 @@ html {
 .router-wrapper {
   padding: 0 20%;
   transition: all 0.3s ease-in-out;
-  margin: 25px 0;
+  margin: 35px 0;
 }
 
 /* Responsive */

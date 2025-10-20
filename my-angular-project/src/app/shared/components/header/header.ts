@@ -51,6 +51,8 @@ export class Header implements OnInit {
     const query = event.target.value.trim();
     if (query.length > 0) {
       this.router.navigate(['/search'], { queryParams: { q: query } });
+    } else {
+      this.router.navigate(['/']);
     }
   }
 

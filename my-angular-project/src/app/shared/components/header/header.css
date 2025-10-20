@@ -53,7 +53,7 @@
   align-items: center;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  padding: 6px 12px;
+  padding: 8px 15px;
   border: 1px solid #535353;
   transition: background-color 0.3s ease;
 }
@@ -65,7 +65,7 @@
 .search-container i {
   color: #ccc;
   margin-right: 8px;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .search-box {
@@ -79,7 +79,7 @@
 
 .search-box::placeholder {
   color: #aaa;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .user-icon {

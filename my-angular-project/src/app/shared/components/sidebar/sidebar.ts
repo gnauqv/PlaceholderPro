@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
@@ -11,17 +11,41 @@ import { RouterLink } from '@angular/router';
 })
 export class Sidebar {
   isSidebarClosed = false;
+  screenWidth: number = window.innerWidth;
+  isUserMenuOpen = false;
 
-  resources = [
-    { name: 'Posts', count: 100, icon: 'fas fa-book', link: '/posts' },
-    // { name: 'Comments', count: 500, icon: 'fas fa-comments', link: '' },
-    { name: 'Albums', count: 100, icon: 'fas fa-images', link: '/albums' },
-    // { name: 'Photos', count: 5000, icon: 'fas fa-photo-film', link: '' },
-    { name: 'Todos', count: 200, icon: 'fas fa-check-square', link: '/todos' },
-    { name: 'Users', count: 10, icon: 'fas fa-users', link: '/users' }
+  menu = [
+    { name: 'Posts', icon: 'fas fa-book', link: '/posts' },
+    { name: 'Albums', icon: 'fas fa-images', link: '/albums' },
+    { name: 'Todos', icon: 'fas fa-check-square', link: '/todos' },
+    { name: 'Users', icon: 'fas fa-users', link: '/users' },
+    { name: 'Quang', icon: 'fas fa-user-gear', link: '/users' }
   ];
 
   toggleSidebar() {
     this.isSidebarClosed = !this.isSidebarClosed;
+  }
+
+  toggleUserMenu() {
+    this.isUserMenuOpen = !this.isUserMenuOpen;
+  }
+
+  logout() {
+    console.log('User logged out');
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.screenWidth = window.innerWidth;
+    this.isSidebarClosed = this.screenWidth < 768;
+  }
+
+  // Ẩn dropdown khi click ra ngoài
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: Event) {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.user-info') && !target.closest('.user-dropdown')) {
+      this.isUserMenuOpen = false;
+    }
   }
 }
