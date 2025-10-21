@@ -1,0 +1,40 @@
+<div class="search-page">
+  <h2>Kết quả tìm kiếm cho: "{{ query }}"</h2>
+
+  <div class="search-section" *ngIf="posts.length">
+    <h3>Bài viết</h3>
+    <ul>
+      <li *ngFor="let p of posts">{{ p.title }}</li>
+    </ul>
+    <button (click)="goToFull('posts')">Xem thêm</button>
+  </div>
+
+  <div class="search-section" *ngIf="users.length">
+    <h3>Người dùng</h3>
+    <ul>
+      <li *ngFor="let u of users">
+        👤 {{ u.name }} <small>({{ u.email }})</small>
+      </li>
+    </ul>
+    <button (click)="goToFull('users')">Xem thêm</button>
+  </div>
+
+  <div class="search-section" *ngIf="albums.length">
+    <h3>Album</h3>
+    <ul>
+      <li *ngFor="let a of albums">{{ a.title }}</li>
+    </ul>
+    <button (click)="goToFull('albums')">Xem thêm</button>
+  </div>
+
+  <div class="search-section" *ngIf="todos.length">
+    <h3>Todo</h3>
+    <ul>
+      <li *ngFor="let t of todos">
+        <input type="checkbox" [checked]="t.completed" disabled />
+        {{ t.title }}
+      </li>
+    </ul>
+    <button (click)="goToFull('todos')">Xem thêm</button>
+  </div>
+</div>

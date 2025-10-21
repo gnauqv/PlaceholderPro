@@ -1,0 +1,42 @@
+<div class="posts-container">
+  <div class="container-title">
+    <h2>Bài viết mới</h2>
+    <a routerLink="/posts" class="view-all">Xem tất cả >></a>
+  </div>
+
+  <div class="posts-grid">
+    <div class="post-card" *ngFor="let post of visiblePosts" (click)="goToDetail(post.id)">
+      <span class="category">{{ getRandomCategory() }}</span>
+
+      <h3>{{ post.title | slice:0:40 | capitalize }}...</h3>
+      <p>{{ post.body | slice:0:100 | capitalize }}...</p>
+
+      <div class="post-footer">
+        <div class="author-info">
+          <img [src]="getRandomAvatar()" alt="author" class="avatar" />
+          <span>{{ getRandomAuthor() }}</span>
+        </div>
+        <div class="meta">
+          <div class="meta-item">
+            <i class="fa-regular fa-comment"></i>
+            <span>{{ getRandomComments() }} comments</span>
+          </div>
+          <div class="meta-item">
+            <i class="fa-regular fa-calendar"></i>
+            <span>{{ getRandomPostTime() }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination-controls">
+    <button (click)="prevPage()" [disabled]="currentPage === 0">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <span>Trang {{ currentPage + 1 }} / {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages - 1">
+      <i class="fa-solid fa-arrow-right"></i>
+    </button>
+  </div>
+</div>

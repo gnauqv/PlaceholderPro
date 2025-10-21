@@ -1,0 +1,34 @@
+<h2 class="title">👤 Users Management</h2>
+
+<div class="actions">
+  <input type="text" placeholder="🔍 Search users..." [(ngModel)]="searchTerm" (input)="filterUsers()" />
+</div>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Company</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of filteredUsers">
+        <td>{{ u.id }}</td>
+        <td>{{ u.name }}</td>
+        <td>{{ u.username }}</td>
+        <td>{{ u.email }}</td>
+        <td>{{ u.company?.name }}</td>
+        <td class="actions-col">
+          <button class="view">👁 View</button>
+          <button class="edit">✏ Edit</button>
+          <button class="delete" (click)="deleteUser(u.id)">🗑 Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

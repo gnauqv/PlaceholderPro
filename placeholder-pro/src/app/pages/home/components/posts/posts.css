@@ -1,0 +1,153 @@
+:host {
+  --bg-dark: #0f0f0f;
+  --bg-hover: #1a1a1a;
+  --border: #464646;
+  --text-light: #fff;
+  --text-muted: #aaa;
+  --text-secondary: #ccc;
+  --accent: #f0b53b;
+}
+
+/* Container */
+.posts-container {
+  margin: 10px auto;
+  color: var(--text-light);
+}
+
+.posts-container>* {
+  margin-bottom: 35px;
+}
+
+.container-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.view-all {
+  opacity: 0.7;
+  color: var(--accent);
+  transition: opacity 0.25s;
+}
+
+.view-all:hover {
+  opacity: 0.9;
+}
+
+/* Grid */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Card */
+.post-card {
+  background: var(--bg-dark);
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.post-card:hover {
+  background: var(--bg-hover);
+  transform: translateY(-6px);
+}
+
+/* Category */
+.category {
+  display: inline-block;
+  font-size: 12px;
+  background: #222;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #bbb;
+}
+
+/* Text */
+.post-card h3 {
+  font-size: 18px;
+  margin: 5px 0;
+  color: var(--text-light);
+}
+
+.post-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 15px;
+}
+
+/* Footer */
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #444;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 2px;
+}
+
+/* Pagination */
+.pagination-controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  align-items: center;
+  color: var(--text-light);
+}
+
+.pagination-controls button {
+  padding: 6px 12px;
+  font-size: 20px;
+  border: none;
+  border-radius: 8px;
+  background: var(--bg-dark);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+  color: var(--text-light);
+}
+
+.pagination-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .posts-grid {
+    grid-template-columns: 1fr;
+  }
+}

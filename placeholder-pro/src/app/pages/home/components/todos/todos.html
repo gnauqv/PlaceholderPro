@@ -1,0 +1,25 @@
+<div class="todos-container">
+  <h2 class="title">📋 Todos</h2>
+
+  <div class="todos-list">
+    <div class="todo-card" *ngFor="let todo of todos">
+      <!-- Left: Checkbox + Title -->
+      <div class="todo-main">
+        <input type="checkbox" [checked]="todo.completed" />
+        <h3>{{ todo.title }}</h3>
+      </div>
+
+      <!-- Right: Tags -->
+      <div class="todo-tags">
+        <span class="priority" [ngClass]="getRandomPriorityClass()">{{ getRandomPriority() }}</span>
+        <span class="category">{{ getRandomCategory() }}</span>
+      </div>
+
+      <!-- Footer -->
+      <div class="todo-footer">
+        <span><i class="fa-regular fa-user"></i> {{ getRandomAuthor() }}</span>
+        <span><i class="fa-regular fa-calendar"></i> {{ getRandomDate() }}</span>
+      </div>
+    </div>
+  </div>
+</div>

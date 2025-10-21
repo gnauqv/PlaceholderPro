@@ -1,0 +1,14 @@
+<nav class="admin-sidebar">
+  <h2 class="sidebar-title">Admin Panel</h2>
+
+  <a routerLink="/admin/dashboard" routerLinkActive="active">📊 Dashboard</a>
+  <a routerLink="/admin/users" routerLinkActive="active">👤 Users</a>
+  <a routerLink="/admin/posts" routerLinkActive="active">📝 Posts</a>
+  <a routerLink="/admin/albums" routerLinkActive="active">📸 Albums</a>
+  <a routerLink="/admin/todos" routerLinkActive="active">✅ Todos</a>
+  <a routerLink="/admin/comments" routerLinkActive="active">💬 Comments</a>
+
+  <div class="sidebar-footer">
+    <a (click)="logout()">🚪 Logout</a>
+  </div>
+</nav>

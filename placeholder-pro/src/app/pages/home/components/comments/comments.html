@@ -1,0 +1,26 @@
+<section class="post-section" *ngIf="post">
+  <h2 class="section-title">📝 Featured Post</h2>
+
+  <div class="post-card">
+    <div class="post-header">
+      <img src="https://i.pravatar.cc/60?u={{post.userId}}" alt="User" class="avatar" />
+      <div>
+        <h3>{{ post.title }}</h3>
+        <p class="author">by User #{{ post.userId }}</p>
+      </div>
+    </div>
+    <p class="post-body">{{ post.body }}</p>
+  </div>
+
+  <div class="comments-section" *ngIf="comments.length">
+    <h3 class="section-subtitle">💬 Reader Comments ({{ comments.length }})</h3>
+    <div *ngFor="let c of comments" class="comment-card">
+      <img src="https://i.pravatar.cc/40?u={{c.email}}" alt="User" class="avatar" />
+      <div class="comment-content">
+        <p class="comment-author">{{ c.name }}</p>
+        <p class="comment-text">{{ c.body }}</p>
+        <span class="comment-email">{{ c.email }}</span>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+.explore-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #111 0%, #1a1a1a 100%);
+  padding: 20px 24px;
+  border-radius: 10px;
+  border: 1px solid #2a2a2a;
+  color: #fff;
+  margin: 20px 0;
+}
+
+.explore-content h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: #f0b53b;
+}
+
+.explore-content p {
+  font-size: 14px;
+  margin: 4px 0 0;
+  color: #aaa;
+}
+
+.explore-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.btn.gold {
+  background-color: #f0b53b;
+  color: #000;
+}
+
+.btn.gold:hover {
+  background-color: #dba534;
+}
+
+.btn.dark {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+.btn.dark:hover {
+  background-color: #333;
+}

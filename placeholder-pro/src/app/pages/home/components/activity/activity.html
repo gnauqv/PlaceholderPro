@@ -1,0 +1,15 @@
+<section class="activity-section">
+  <h2 class="section-title">Recent Activity</h2>
+  <p class="subtitle">Latest updates across the platform</p>
+
+  <div class="activity-card">
+    <div *ngFor="let a of activities" class="activity-item">
+      <div class="dot"></div>
+      <div class="activity-content">
+        <p class="activity-title">{{ a.title }}</p>
+        <span class="activity-user">by {{ a.user }}</span>
+      </div>
+      <span class="activity-time">⏱ {{ a.time }}</span>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+<header class="header">
+  <a routerLink="/" class="logo">qdz</a>
+
+  <div class="header-right">
+    <!-- Search -->
+    <div class="search-container">
+      <i class="fas fa-search"></i>
+      <input 
+        type="text" 
+        class="search-box" 
+        placeholder="Tìm kiếm..." 
+        (input)="onSearchChange($event)" />
+    </div>
+
+    <!-- User Menu -->
+    <div class="user-menu">
+      <ng-container *ngIf="user; else guest">
+        <i class="fas fa-user-circle user-icon" (click)="togglePopup()"></i>
+
+        <div class="popup-menu" *ngIf="isPopupOpen">
+          <a routerLink="/profile">👤 Profile</a>
+          <a (click)="logout()">🚪 Logout</a>
+        </div>
+      </ng-container>
+
+      <!-- Nếu chưa đăng nhập -->
+      <ng-template #guest>
+        <button class="auth-btn" (click)="openAuth('login')">Login</button>
+        <button class="auth-btn" (click)="openAuth('signup')">Sign Up</button>
+      </ng-template>
+    </div>
+  </div>
+</header>
+
+<div class="spacingHeader"></div>
+
+<!-- Auth Popup -->
+<app-auth-popup (authSuccess)="user = $event"></app-auth-popup>
+
