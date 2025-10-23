@@ -9,12 +9,14 @@
   font-weight: 600;
 }
 
+/* Danh sách dọc */
 .todos-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
+/* Thẻ todo */
 .todo-card {
   background: #0f0f0f;
   border-radius: 10px;
@@ -32,7 +34,7 @@
   background: #1a1a1a;
 }
 
-/* Main row */
+/* Dòng chính (checkbox + tiêu đề) */
 .todo-main {
   display: flex;
   align-items: center;
@@ -45,12 +47,13 @@
   font-weight: 600;
 }
 
-/* Tags */
+/* Nhóm nhãn */
 .todo-tags {
   display: flex;
   gap: 8px;
 }
 
+/* Mức ưu tiên */
 .priority {
   padding: 2px 8px;
   border-radius: 8px;
@@ -63,6 +66,7 @@
 .priority.medium { background: #5a4b1a; color: #ffe08a; }
 .priority.low { background: #1a4d2e; color: #a8ffcc; }
 
+/* Danh mục */
 .category {
   padding: 2px 8px;
   border-radius: 8px;

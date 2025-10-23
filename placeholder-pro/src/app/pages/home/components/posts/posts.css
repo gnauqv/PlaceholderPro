@@ -1,153 +1,142 @@
 :host {
-  --bg-dark: #0f0f0f;
+  /* Biến màu dùng lại toàn cục */
+  --bg: #0f0f0f;
   --bg-hover: #1a1a1a;
-  --border: #464646;
-  --text-light: #fff;
-  --text-muted: #aaa;
-  --text-secondary: #ccc;
+  --border: #444;
+  --txt: #fff;
+  --txt-muted: #aaa;
   --accent: #f0b53b;
 }
 
-/* Container */
-.posts-container {
+/* ===== Container chính ===== */
+.posts {
   margin: 10px auto;
-  color: var(--text-light);
+  color: var(--txt);
+}
+.posts > * {
+  margin-bottom: 30px;
 }
 
-.posts-container>* {
-  margin-bottom: 35px;
-}
-
-.container-title {
+/* ===== Thanh tiêu đề ===== */
+.title-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
-.view-all {
-  opacity: 0.7;
+.link {
   color: var(--accent);
+  opacity: 0.75;
   transition: opacity 0.25s;
 }
+.link:hover { opacity: 1; }
 
-.view-all:hover {
-  opacity: 0.9;
-}
-
-/* Grid */
-.posts-grid {
+/* ===== Lưới bài viết ===== */
+.grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
 
-/* Card */
-.post-card {
-  background: var(--bg-dark);
-  padding: 20px;
+/* ===== Thẻ bài viết ===== */
+.card {
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 14px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease, background 0.3s ease;
-  cursor: pointer;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
 }
-
-.post-card:hover {
+.card:hover {
   background: var(--bg-hover);
   transform: translateY(-6px);
 }
 
-/* Category */
-.category {
+/* ===== Thẻ thể loại ===== */
+.tag {
   display: inline-block;
-  font-size: 12px;
   background: #222;
   padding: 4px 10px;
   border-radius: 20px;
-  margin-bottom: 10px;
+  font-size: 12px;
   font-weight: 600;
   color: #bbb;
+  margin-bottom: 10px;
 }
 
-/* Text */
-.post-card h3 {
+/* ===== Tiêu đề + mô tả ===== */
+.card h3 {
   font-size: 18px;
+  color: var(--txt);
   margin: 5px 0;
-  color: var(--text-light);
 }
-
-.post-card p {
+.card p {
   font-size: 14px;
-  color: var(--text-muted);
+  color: var(--txt-muted);
   margin-bottom: 15px;
 }
 
-/* Footer */
-.post-footer {
+/* ===== Footer bài viết ===== */
+.footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 13px;
-  color: var(--text-secondary);
+  color: #ccc;
 }
 
-.author-info {
+/* Thông tin tác giả */
+.author {
   display: flex;
   align-items: center;
   gap: 6px;
 }
-
-.avatar {
+.author img {
   width: 28px;
   height: 28px;
   border-radius: 50%;
+  border: 1px solid var(--border);
   object-fit: cover;
-  border: 1px solid #444;
 }
 
-.meta-item {
+/* Meta: comment + ngày đăng */
+.meta {
   display: flex;
-  align-items: center;
-  gap: 5px;
-  margin-top: 2px;
+  flex-direction: column;
+  gap: 2px;
+}
+.meta i {
+  margin-right: 4px;
 }
 
-/* Pagination */
-.pagination-controls {
-  margin-top: 20px;
+/* ===== Phân trang ===== */
+.pagination {
   display: flex;
   justify-content: center;
-  gap: 12px;
   align-items: center;
-  color: var(--text-light);
+  gap: 12px;
 }
-
-.pagination-controls button {
+.pagination button {
   padding: 6px 12px;
-  font-size: 20px;
+  font-size: 18px;
   border: none;
-  border-radius: 8px;
-  background: var(--bg-dark);
-  color: var(--text-secondary);
+  border-radius: 6px;
+  background: var(--bg);
+  color: #ccc;
   cursor: pointer;
-  transition: color 0.3s;
+  transition: 0.25s;
 }
-
-.pagination-controls button:hover:not(:disabled) {
-  color: var(--text-light);
+.pagination button:hover:not(:disabled) {
+  color: var(--txt);
 }
-
-.pagination-controls button:disabled {
+.pagination button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-/* Responsive */
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .posts-grid {
-    grid-template-columns: 1fr;
-  }
+  .grid { grid-template-columns: 1fr; }
 }

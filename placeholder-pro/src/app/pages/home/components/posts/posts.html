@@ -1,36 +1,34 @@
-<div class="posts-container">
-  <div class="container-title">
+<div class="posts">
+  <!-- ===== Tiêu đề + link xem tất cả ===== -->
+  <div class="title-bar">
     <h2>Bài viết mới</h2>
-    <a routerLink="/posts" class="view-all">Xem tất cả >></a>
+    <a routerLink="/posts" class="link">Xem tất cả >></a>
   </div>
 
-  <div class="posts-grid">
-    <div class="post-card" *ngFor="let post of visiblePosts" (click)="goToDetail(post.id)">
-      <span class="category">{{ getRandomCategory() }}</span>
+  <!-- ===== Danh sách bài viết ===== -->
+  <div class="grid">
+    <div class="card" *ngFor="let post of visiblePosts" (click)="goToDetail(post.id)">
+      <span class="tag">{{ getRandomCategory() }}</span>
 
       <h3>{{ post.title | slice:0:40 | capitalize }}...</h3>
       <p>{{ post.body | slice:0:100 | capitalize }}...</p>
 
-      <div class="post-footer">
-        <div class="author-info">
-          <img [src]="getRandomAvatar()" alt="author" class="avatar" />
+      <!-- ===== Footer: tác giả + meta ===== -->
+      <div class="footer">
+        <div class="author">
+          <img [src]="getRandomAvatar()" alt="author" />
           <span>{{ getRandomAuthor() }}</span>
         </div>
         <div class="meta">
-          <div class="meta-item">
-            <i class="fa-regular fa-comment"></i>
-            <span>{{ getRandomComments() }} comments</span>
-          </div>
-          <div class="meta-item">
-            <i class="fa-regular fa-calendar"></i>
-            <span>{{ getRandomPostTime() }}</span>
-          </div>
+          <span><i class="fa-regular fa-comment"></i> {{ getRandomComments() }} comments</span>
+          <span><i class="fa-regular fa-calendar"></i> {{ getRandomPostTime() }}</span>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="pagination-controls">
+  <!-- ===== Phân trang ===== -->
+  <div class="pagination">
     <button (click)="prevPage()" [disabled]="currentPage === 0">
       <i class="fa-solid fa-arrow-left"></i>
     </button>

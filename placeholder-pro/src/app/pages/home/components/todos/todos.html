@@ -2,23 +2,24 @@
   <h2 class="title">📋 Todos</h2>
 
   <div class="todos-list">
+    <!-- Lặp qua danh sách todo -->
     <div class="todo-card" *ngFor="let todo of todos">
-      <!-- Left: Checkbox + Title -->
+      <!-- Cột trái: Checkbox + tiêu đề -->
       <div class="todo-main">
         <input type="checkbox" [checked]="todo.completed" />
         <h3>{{ todo.title }}</h3>
       </div>
 
-      <!-- Right: Tags -->
+      <!-- Cột giữa: Nhãn (ưu tiên + loại) -->
       <div class="todo-tags">
-        <span class="priority" [ngClass]="getRandomPriorityClass()">{{ getRandomPriority() }}</span>
-        <span class="category">{{ getRandomCategory() }}</span>
+        <span class="priority" [ngClass]="todo.priorityClass">{{ todo.priority }}</span>
+        <span class="category">{{ todo.category }}</span>
       </div>
 
-      <!-- Footer -->
+      <!-- Cột dưới: Tác giả + ngày -->
       <div class="todo-footer">
-        <span><i class="fa-regular fa-user"></i> {{ getRandomAuthor() }}</span>
-        <span><i class="fa-regular fa-calendar"></i> {{ getRandomDate() }}</span>
+        <span><i class="fa-regular fa-user"></i> {{ todo.author }}</span>
+        <span><i class="fa-regular fa-calendar"></i> {{ todo.date }}</span>
       </div>
     </div>
   </div>

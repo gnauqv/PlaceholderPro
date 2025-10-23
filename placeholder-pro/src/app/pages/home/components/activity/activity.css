@@ -1,53 +1,64 @@
 .activity-section {
   padding: 40px 20px;
-  background: #0f0f0f;
+  background: var(--bg-dark, #0f0f0f);
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-  color: #fff;
+  color: var(--text-light, #fff);
   max-width: 100%;
-  /* margin: 0 auto; */
 }
 
+/* Tiêu đề chính */
 .section-title {
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 6px;
-  color: #f0b53b;
+  color: var(--accent, #f0b53b);
 }
 
+/* Mô tả phụ */
 .subtitle {
   font-size: 14px;
-  color: #aaa;
+  color: var(--text-muted, #aaa);
   margin-bottom: 20px;
 }
 
+/* Khung chứa hoạt động */
 .activity-card {
-  background: #111827;
+  background: var(--bg-hover, #111827);
   padding: 20px;
   border-radius: 12px;
 }
 
+/* Mỗi dòng hoạt động */
 .activity-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 14px 0;
   border-bottom: 1px solid #2a2a2a;
+  transition: background 0.25s ease;
+}
+
+/* Hover nhẹ cho hiệu ứng sinh động */
+.activity-item:hover {
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .activity-item:last-child {
   border-bottom: none;
 }
 
+/* Dấu chấm vàng */
 .dot {
   width: 8px;
   height: 8px;
-  background: #f0b53b;
+  background: var(--accent, #f0b53b);
   border-radius: 50%;
   margin-right: 14px;
   flex-shrink: 0;
 }
 
+/* Nội dung bên trái */
 .activity-content {
   flex: 1;
   margin-left: 6px;
@@ -57,16 +68,17 @@
   font-size: 15px;
   font-weight: 600;
   margin: 0;
-  color: #fff;
+  color: var(--text-light, #fff);
 }
 
 .activity-user {
   font-size: 13px;
-  color: #bbb;
+  color: var(--text-secondary, #bbb);
 }
 
+/* Thời gian bên phải */
 .activity-time {
   font-size: 13px;
-  color: #888;
+  color: var(--text-muted, #888);
   white-space: nowrap;
 }

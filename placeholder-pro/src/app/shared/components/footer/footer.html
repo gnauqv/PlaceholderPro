@@ -1,50 +1,22 @@
 <footer class="footer">
   <div class="footer-container">
-    <!-- Logo + mô tả -->
     <div class="footer-brand">
-      <h2 class="brand-title">LUXE</h2>
-      <p class="brand-desc">
-        Crafting exceptional digital experiences that inspire, engage,
-        and deliver outstanding results for forward-thinking brands worldwide.
-      </p>
+      <h1 style="color: #f0b53b;">PrP</h1>
+      <p>Fetching placeholder data made easy with API Placeholder.</p>
       <div class="social-icons">
-        <a routerLink=""><i class="fa-brands fa-instagram"></i></a>
-        <a routerLink=""><i class="fa-brands fa-x-twitter"></i></a>
-        <a routerLink=""><i class="fa-brands fa-linkedin-in"></i></a>
-        <a routerLink=""><i class="fa-solid fa-envelope"></i></a>
+        <span *ngFor="let i of icons">
+          <i class="{{ i }}"></i>
+        </span>
       </div>
+
     </div>
 
-    <!-- Company -->
-    <div class="footer-col">
-      <h4>Company</h4>
+    <div *ngFor="let items of FooterItems" class="footer-col">
+      <h4>{{ items.title }}</h4>
       <ul>
-        <li><a routerLink="/about">About</a></li>
-        <li><a routerLink="">Services</a></li>
-        <li><a routerLink="/contact">Contact</a></li>
-        <li><a routerLink="">Careers</a></li>
-      </ul>
-    </div>
-
-    <!-- Services -->
-    <div class="footer-col">
-      <h4>Services</h4>
-      <ul>
-        <li><a routerLink="">Web Design</a></li>
-        <li><a routerLink="">Development</a></li>
-        <li><a routerLink="">Consulting</a></li>
-        <li><a routerLink="">Strategy</a></li>
-      </ul>
-    </div>
-
-    <!-- Resources -->
-    <div class="footer-col">
-      <h4>Resources</h4>
-      <ul>
-        <li><a routerLink="">Blog</a></li>
-        <li><a routerLink="">Case Studies</a></li>
-        <li><a routerLink="">Portfolio</a></li>
-        <li><a routerLink="">Support</a></li>
+        <li *ngFor="let item of items.links">
+          <span>{{ item }}</span>
+        </li>
       </ul>
     </div>
   </div>

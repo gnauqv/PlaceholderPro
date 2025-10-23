@@ -1,14 +1,22 @@
 <section class="activity-section">
+  <!-- Tiêu đề -->
   <h2 class="section-title">Recent Activity</h2>
   <p class="subtitle">Latest updates across the platform</p>
 
+  <!-- Thẻ chính chứa danh sách hoạt động -->
   <div class="activity-card">
+    <!-- Lặp qua từng hoạt động -->
     <div *ngFor="let a of activities" class="activity-item">
+      <!-- Dot bên trái -->
       <div class="dot"></div>
+
+      <!-- Nội dung chính -->
       <div class="activity-content">
         <p class="activity-title">{{ a.title }}</p>
         <span class="activity-user">by {{ a.user }}</span>
       </div>
+
+      <!-- Thời gian -->
       <span class="activity-time">⏱ {{ a.time }}</span>
     </div>
   </div>

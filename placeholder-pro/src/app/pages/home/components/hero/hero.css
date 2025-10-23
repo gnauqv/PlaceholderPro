@@ -1,154 +1,133 @@
 :host {
   display: block;
-  /* dễ đổi theme */
-  --carousel-height: 240px;
+  /* Tùy chỉnh nhanh */
+  --h: 240px;
   --accent: #f0b53b;
-  --accent-light: #fceabb;
-  --text-light: #fff;
-  --overlay-top: rgba(0, 0, 0, 0.35);
-  --overlay-bottom: rgba(0, 0, 0, 0.45);
+  --txt: #fff;
 }
 
-/* Container */
-.hero-carousel {
+/* ===== Khung tổng ===== */
+.hero {
   position: relative;
-  height: var(--carousel-height);
+  height: var(--h);
   overflow: hidden;
-  background: #0f0f0f;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.9);
   border-radius: 15px;
+  background: #000;
 }
 
-/* Track */
-.carousel-track {
+/* ===== Dải trượt chính ===== */
+.track {
   display: flex;
   height: 100%;
-  transition: transform 900ms cubic-bezier(.22,.9,.35,1);
-  will-change: transform;
+  transition: transform 0.8s ease;
 }
 
-/* Slide */
-.carousel-slide {
+/* ===== Mỗi slide ===== */
+.slide {
   flex: 0 0 100%;
-  min-width: 100%;
-  height: 100%;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-light);
+  color: var(--txt);
   text-align: center;
 }
 
-.carousel-slide img {
+/* Ảnh nền */
+.slide img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  filter: saturate(.95) contrast(.95);
+  filter: brightness(0.85);
 }
 
-/* Overlay */
-.slide-overlay {
+/* Lớp mờ phủ lên ảnh để dễ đọc chữ */
+.overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, var(--overlay-top), var(--overlay-bottom));
-  z-index: 1;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.55));
 }
 
-/* Content */
+/* ===== Nội dung chữ ===== */
 .content {
   position: relative;
-  z-index: 2;
-  padding: 12px 24px;
-  max-width: 980px;
+  z-index: 1;
+  max-width: 900px;
+  padding: 0 20px;
 }
 
 .content h1 {
-  font-size: 34px;
-  letter-spacing: 1.8px;
+  font-size: 32px;
   text-transform: uppercase;
-  margin-bottom: 8px;
 }
 
 .content h1 span {
-  background: linear-gradient(to right, var(--accent), var(--accent-light));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--accent);
 }
 
 .content p {
   font-size: 16px;
-  opacity: .95;
-  margin-bottom: 10px;
+  margin: 8px 0;
+  opacity: 0.95;
 }
 
-.content .cta {
+/* Nút CTA tái sử dụng cho slide */
+.btn {
   color: var(--accent);
   text-decoration: none;
   font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 4px;
-  transition: all 0.25s ease;
+  transition: 0.25s;
+}
+.btn:hover {
+  opacity: 0.8;
 }
 
-.content .cta:hover {
-  background: rgba(0, 0, 0, 0.6);
-  transform: scale(1.05);
-}
-
-/* Indicators */
-.carousel-indicators {
+/* ===== Dấu chấm chỉ slide hiện tại ===== */
+.dots {
   position: absolute;
   bottom: 14px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 10px;
-  z-index: 3;
+  gap: 8px;
 }
-
-.dot {
-  width: 12px;
-  height: 12px;
+.dots button {
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.35);
   border: none;
+  background: rgba(255,255,255,0.4);
   cursor: pointer;
   transition: background 0.25s;
 }
-
-.dot.active {
+.dots button.active {
   background: var(--accent);
 }
 
-/* Arrows */
+/* ===== Nút điều hướng 2 bên ===== */
 .arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 4;
+  background: rgba(0,0,0,0.4);
   border: none;
-  background: rgba(0,0,0,0.45);
-  color: var(--text-light);
-  padding: 8px 12px;
+  color: var(--txt);
+  padding: 6px 10px;
   font-size: 22px;
-  cursor: pointer;
   border-radius: 6px;
-  transition: background 0.25s;
+  cursor: pointer;
+  transition: 0.25s;
 }
-
 .arrow:hover {
-  background: rgba(0,0,0,0.65);
+  background: rgba(0,0,0,0.6);
 }
+.prev { left: 10px; }
+.next { right: 10px; }
 
-.arrow.prev { left: 12px; }
-.arrow.next { right: 12px; }
-
-/* Responsive */
+/* ===== Responsive ===== */
 @media (max-width: 720px) {
-  :host { --carousel-height: 220px; }
+  :host { --h: 200px; }
   .content h1 { font-size: 20px; }
 }

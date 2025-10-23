@@ -1,26 +1,27 @@
-<section class="hero-carousel">
-  <!-- Caroseul track -->
-  <div class="carousel-track" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
-    <div class="carousel-slide" *ngFor="let s of slides; let i = index">
-      <!-- ảnh dùng <img> để tránh layout lỗi, object-fit cover -->
-      <img [src]="s.img" alt="{{ s.title }}" loading="lazy" />
-      <div class="slide-overlay"></div>
+<section class="hero">
+  <!-- Dải trượt -->
+  <div class="track" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+    <div *ngFor="let s of slides" class="slide">
+      <img [src]="s.img" [alt]="s.title" loading="lazy" />
+      <div class="overlay"></div>
 
       <div class="content">
-        <h1><span *ngIf="s.highlight">{{ s.highlight }}</span>{{ s.title }}</h1>
+        <h1><span *ngIf="s.highlight">{{ s.highlight }} </span>{{ s.title }}</h1>
         <p [innerHTML]="s.desc"></p>
-        <a *ngIf="s.link" [routerLink]="s.link" class="cta">Xem ngay</a>
+        <a *ngIf="s.link" [routerLink]="s.link" class="btn">Xem ngay</a>
       </div>
     </div>
   </div>
 
-  <!-- Indicators -->
-  <div class="carousel-indicators">
-    <button class="dot" *ngFor="let _ of slides; let i = index" [class.active]="i === currentIndex" (click)="goTo(i)"
-      aria-label="Go to slide {{ i + 1 }}"></button>
+  <!-- Dấu chấm điều hướng -->
+  <div class="dots">
+    <button *ngFor="let _ of slides; let i = index"
+      [class.active]="i === currentIndex"
+      (click)="goTo(i)">
+    </button>
   </div>
 
-  <!-- optional arrows -->
-  <button class="arrow prev" (click)="prev()" aria-label="Previous">‹</button>
-  <button class="arrow next" (click)="next()" aria-label="Next">›</button>
+  <!-- Nút điều hướng -->
+  <button class="arrow prev" (click)="prev()">‹</button>
+  <button class="arrow next" (click)="next()">›</button>
 </section>

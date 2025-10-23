@@ -21,7 +21,7 @@ export class Header implements OnInit {
     private eRef: ElementRef,
     private router: Router,
     private authService: AuthService
-  ) {}
+  ) { }
 
   ngOnInit() {
     // Theo dõi trạng thái user từ service

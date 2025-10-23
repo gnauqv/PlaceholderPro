@@ -18,7 +18,7 @@ export class AuthComponent {
 
   @Output() authSuccess = new EventEmitter<any>();
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) { }
 
   /**
    * Mở popup với chế độ login hoặc signup.

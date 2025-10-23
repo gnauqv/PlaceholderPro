@@ -23,21 +23,4 @@
     </ul>
   </div>
 
-  <!-- User Profile -->
-  <nav class="profile">
-    <div class="user-info" (click)="toggleUserMenu()">
-      <img src="assets/images/avatar.jpg" alt="User Avatar" class="avatar" />
-      <div class="user-details" *ngIf="!isSidebarClosed">
-        <h5 class="user-name">Quang Tạ</h5>
-        <p class="user-email">quang@example.com</p>
-      </div>
-    </div>
-
-    <!-- User Dropdown -->
-    <div class="user-dropdown" [class.active]="isUserMenuOpen" *ngIf="!isSidebarClosed">
-      <a routerLink="/profile"><i class="fa-solid fa-user"></i> Profile</a>
-      <a routerLink="/settings"><i class="fa-solid fa-gear"></i> Settings</a>
-      <a (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-    </div>
-  </nav>
 </div>
