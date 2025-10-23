@@ -1,40 +1,44 @@
 <div class="search-page">
   <h2>Kết quả tìm kiếm cho: "{{ query }}"</h2>
 
-  <div class="search-section" *ngIf="posts.length">
-    <h3>Bài viết</h3>
-    <ul>
-      <li *ngFor="let p of posts">{{ p.title }}</li>
-    </ul>
-    <button (click)="goToFull('posts')">Xem thêm</button>
-  </div>
+  <!-- Lặp qua các loại dữ liệu -->
+  <ng-container *ngFor="let api of apis">
+    <div class="search-section" *ngIf="results[api.key]?.length">
+      <h3>{{ api.label }}</h3>
+      <ul>
+        <!-- Lặp qua các phần tử trong từng loại -->
+        <li *ngFor="let item of results[api.key].slice(0, visibleCounts[api.key])">
+          <ng-container [ngSwitch]="api.key">
 
-  <div class="search-section" *ngIf="users.length">
-    <h3>Người dùng</h3>
-    <ul>
-      <li *ngFor="let u of users">
-        👤 {{ u.name }} <small>({{ u.email }})</small>
-      </li>
-    </ul>
-    <button (click)="goToFull('users')">Xem thêm</button>
-  </div>
+            <!-- 🧍 USERS (chỉ hiển thị, không có link hoặc nút) -->
+            <span *ngSwitchCase="'users'">
+              👤 {{ item.name }} <small>({{ item.email }})</small>
+            </span>
 
-  <div class="search-section" *ngIf="albums.length">
-    <h3>Album</h3>
-    <ul>
-      <li *ngFor="let a of albums">{{ a.title }}</li>
-    </ul>
-    <button (click)="goToFull('albums')">Xem thêm</button>
-  </div>
+            <!-- 📝 POSTS -->
+            <a *ngSwitchCase="'posts'" [routerLink]="['/posts', item.id]" class="link-item">
+              📝 {{ item.title | capitalize }}
+            </a>
 
-  <div class="search-section" *ngIf="todos.length">
-    <h3>Todo</h3>
-    <ul>
-      <li *ngFor="let t of todos">
-        <input type="checkbox" [checked]="t.completed" disabled />
-        {{ t.title }}
-      </li>
-    </ul>
-    <button (click)="goToFull('todos')">Xem thêm</button>
-  </div>
+            <!-- 💿 ALBUMS -->
+            <a *ngSwitchCase="'albums'" [routerLink]="['/album-detail']" class="link-item">
+              💿 {{ item.title | capitalize}}
+            </a>
+
+            <!-- ✅ TODOS -->
+            <span *ngSwitchCase="'todos'">
+              <input type="checkbox" [checked]="item.completed" disabled />
+              {{ item.title | capitalize}}
+            </span>
+          </ng-container>
+        </li>
+      </ul>
+
+      <!-- Nút hiển thị thêm & xem tất cả (trừ users) -->
+      <div *ngIf="api.key !== 'users'" class="btn-group">
+        <button (click)="showMore(api.key)">Hiển thị thêm</button>
+        <button (click)="goToFull(api.key)">Xem tất cả</button>
+      </div>
+    </div>
+  </ng-container>
 </div>

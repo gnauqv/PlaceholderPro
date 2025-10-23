@@ -1,40 +1,43 @@
-body,
-html {
+html, body {
   margin: 0;
-  background-color: rgba(0, 0, 0, 0.9);
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
 }
 
+/* === Bố cục chính === */
 .layout {
   display: flex;
-  width: 100%;
-  flex: 1;
   height: calc(100vh - 80px);
-  overflow: hidden;
-  /* tránh tràn ngang */
+  overflow: hidden; /* tránh tràn ngang */
 }
 
-/* content chiếm toàn bộ khoảng trống còn lại */
+/* === Vùng nội dung chính === */
 .content {
+  flex: 1;
   overflow-y: auto;
+  scroll-behavior: smooth;
   transition: all 0.3s ease;
-  /* hiệu ứng mượt */
-  /* padding: 0 20%; */
-
-
-  /* ẩn thanh cuộn */
-  scrollbar-width: none;
-  /* Firefox */
-  -ms-overflow-style: none;
-  /* IE, Edge */
 }
 
+/* Ẩn thanh cuộn đẹp hơn */
+.content::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.content {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE, Edge */
+}
+
+/* === Vùng chứa router === */
 .router-wrapper {
-  padding: 0 20%;
-  transition: all 0.3s ease-in-out;
-  margin: 35px 0;
+  padding: 0 15%;
+  margin: 40px 0;
+  transition: padding 0.3s ease;
 }
 
-/* Responsive */
+/* === Responsive === */
 @media (max-width: 1600px) {
   .router-wrapper {
     padding: 0 10%;
@@ -42,6 +45,16 @@ html {
 }
 @media (max-width: 1300px) {
   .router-wrapper {
+    padding: 0 5%;
+  }
+}
+@media (max-width: 900px) {
+  .layout {
+    flex-direction: column;
+    height: auto;
+  }
+  .router-wrapper {
     padding: 0 2%;
+    margin: 20px 0;
   }
 }

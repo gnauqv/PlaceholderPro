@@ -18,8 +18,6 @@ export class Sidebar {
     { name: 'Posts', icon: 'fas fa-book', link: '/posts' },
     { name: 'Albums', icon: 'fas fa-images', link: '/albums' },
     { name: 'Todos', icon: 'fas fa-check-square', link: '/todos' },
-    { name: 'Users', icon: 'fas fa-users', link: '/users' },
-    { name: 'Quang', icon: 'fas fa-user-gear', link: '/users' }
   ];
 
   toggleSidebar() {

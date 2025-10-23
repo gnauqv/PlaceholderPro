@@ -5,11 +5,12 @@
     <!-- Search -->
     <div class="search-container">
       <i class="fas fa-search"></i>
-      <input 
-        type="text" 
-        class="search-box" 
-        placeholder="Tìm kiếm..." 
-        (input)="onSearchChange($event)" />
+      <input
+        type="text"
+        class="search-box"
+        placeholder="Tìm kiếm..."
+        (input)="onSearchChange($event)"
+      />
     </div>
 
     <!-- User Menu -->
@@ -18,8 +19,8 @@
         <i class="fas fa-user-circle user-icon" (click)="togglePopup()"></i>
 
         <div class="popup-menu" *ngIf="isPopupOpen">
-          <a routerLink="/profile">👤 Profile</a>
-          <a (click)="logout()">🚪 Logout</a>
+          <a routerLink="/profile">👤 Hồ sơ</a>
+          <a (click)="logout()">🚪 Đăng xuất</a>
         </div>
       </ng-container>
 
@@ -33,7 +34,3 @@
 </header>
 
 <div class="spacingHeader"></div>
-
-<!-- Auth Popup -->
-<app-auth-popup (authSuccess)="user = $event"></app-auth-popup>
-

@@ -1,89 +1,60 @@
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { CapitalizePipe } from '../../shared/pipes/capitalize-pipe';
 
+// Định nghĩa kiểu Todo lấy từ API
 interface Todo {
+  id: number;
   title: string;
-  user: string;
-  date: string;
-  priority: 'low' | 'medium' | 'high';
-  category: 'Work' | 'Personal';
   completed: boolean;
+  userId: number;
 }
 
 @Component({
   selector: 'app-todos',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CapitalizePipe],
   templateUrl: './todos.html',
   styleUrls: ['./todos.css']
 })
-export class TodosComponent {
+export class TodosComponent implements OnInit {
+  todos: Todo[] = [];
   searchText = '';
-  filter: 'all' | 'pending' | 'completed' = 'all';
+  filter: 'all' | 'completed' | 'pending' = 'all';
+  filters: ('all' | 'completed' | 'pending')[] = ['all', 'completed', 'pending'];
 
-  todos: Todo[] = [
-    {
-      title: 'delectus aut autem',
-      user: 'Leanne Graham',
-      date: '2024-01-15',
-      priority: 'high',
-      category: 'Work',
-      completed: false
-    },
-    {
-      title: 'quis ut nam facilis et officia qui',
-      user: 'Leanne Graham',
-      date: '2024-01-14',
-      priority: 'medium',
-      category: 'Personal',
-      completed: false
-    },
-    {
-      title: 'fugiat veniam minus',
-      user: 'Leanne Graham',
-      date: '2024-01-13',
-      priority: 'low',
-      category: 'Work',
-      completed: false
-    },
-    {
-      title: 'et porro tempora',
-      user: 'Leanne Graham',
-      date: '2024-01-12',
-      priority: 'high',
-      category: 'Personal',
-      completed: true
-    }
-  ];
+  constructor(private http: HttpClient) {}
 
-  get completedCount() {
-    return this.todos.filter(t => t.completed).length;
+  // 🔹 Lấy dữ liệu từ API khi component khởi tạo
+  ngOnInit() {
+    this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=20')
+      .subscribe({
+        next: data => this.todos = data,
+        error: err => console.error('Lỗi tải dữ liệu:', err)
+      });
   }
 
-  get pendingCount() {
-    return this.todos.filter(t => !t.completed).length;
+  // 🔹 Thống kê
+  get completedCount() { return this.todos.filter(t => t.completed).length; }
+  get pendingCount() { return this.todos.filter(t => !t.completed).length; }
+
+  // 🔹 Lọc & tìm kiếm
+  get filteredTodos(): Todo[] {
+    const search = this.searchText.toLowerCase();
+    return this.todos.filter(todo => {
+      const matchSearch = todo.title.toLowerCase().includes(search);
+      const matchFilter =
+        this.filter === 'all' ||
+        (this.filter === 'completed' && todo.completed) ||
+        (this.filter === 'pending' && !todo.completed);
+      return matchSearch && matchFilter;
+    });
   }
 
-  get highPriorityCount() {
-    return this.todos.filter(t => t.priority === 'high').length;
-  }
-
-  filteredTodos() {
-    let list = this.todos;
-
-    if (this.searchText) {
-      list = list.filter(todo =>
-        todo.title.toLowerCase().includes(this.searchText.toLowerCase())
-      );
-    }
-
-    if (this.filter === 'pending') {
-      list = list.filter(t => !t.completed);
-    } else if (this.filter === 'completed') {
-      list = list.filter(t => t.completed);
-    }
-
-    return list;
+  // 🔹 Toggle trạng thái hoàn thành
+  toggleStatus(todo: Todo) {
+    todo.completed = !todo.completed;
   }
 }

@@ -1,0 +1,43 @@
+<div class="auth-container">
+  <h2>{{ mode === 'login' ? 'Đăng nhập' : 'Đăng ký tài khoản' }}</h2>
+
+  <form (ngSubmit)="submit()">
+    <input
+      type="email"
+      placeholder="Email"
+      [(ngModel)]="email"
+      name="email"
+      required
+    />
+
+    <input
+      type="password"
+      placeholder="Mật khẩu"
+      [(ngModel)]="password"
+      name="password"
+      required
+    />
+
+    <input
+      *ngIf="mode === 'signup'"
+      type="password"
+      placeholder="Nhập lại mật khẩu"
+      [(ngModel)]="confirmPassword"
+      name="confirmPassword"
+      required
+    />
+
+    <button type="submit">
+      {{ mode === 'login' ? 'Đăng nhập' : 'Đăng ký' }}
+    </button>
+
+    <p *ngIf="error" class="error">{{ error }}</p>
+  </form>
+
+  <p class="switch">
+    {{ mode === 'login' ? 'Chưa có tài khoản?' : 'Đã có tài khoản?' }}
+    <a (click)="switchMode()">
+      {{ mode === 'login' ? 'Đăng ký ngay' : 'Đăng nhập' }}
+    </a>
+  </p>
+</div>

@@ -1,84 +1,29 @@
 <div class="post-detail-wrapper" *ngIf="post">
-  <!-- MAIN CONTENT -->
+  <!-- === BÀI VIẾT CHÍNH === -->
   <section class="post-detail">
-    <!-- Tags -->
-    <div class="tags">
-      <span class="tag">Technology</span>
-      <span class="tag">#JavaScript</span>
-      <span class="tag">#Web Development</span>
-    </div>
-
-    <!-- Title -->
     <h1>{{ post.title }}</h1>
+    <p class="meta">👤 Người đăng  •  📅 2024-01-15</p>
 
-    <!-- Meta -->
-    <div class="meta">
-      <span class="author">👤 Leanne Graham</span>
-      <span class="date">📅 2024-01-15</span>
-      <span>💬 {{ comments.length }} comments</span>
-      <span>❤️ 42 likes</span>
-    </div>
-
-    <!-- Content -->
+    <!-- Nội dung -->
     <article class="content">
       <p>{{ post.body }}</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore...</p>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium...</p>
     </article>
 
-    <!-- Actions -->
+    <!-- Nút hành động -->
     <div class="actions">
-      <button>❤️ Like (42)</button>
-      <button>💾 Save</button>
-      <button>🔗 Share</button>
-      <button>Edit</button>
+      <button (click)="likePost()">❤️ Thích ({{ totalLikes }})</button>
     </div>
 
-    <!-- Comments -->
+    <!-- Bình luận -->
     <div class="comments">
-      <h3>Comments ({{ comments.length }})</h3>
+      <h3>Bình luận ({{ comments.length }})</h3>
       <div *ngFor="let c of comments" class="comment-card">
         <div class="avatar">{{ c.name[0] }}</div>
-        <div class="comment-body">
-          <p class="author">{{ c.name }} <span class="date">2024-01-16</span></p>
+        <div>
+          <p class="author">{{ c.name }}</p>
           <p>{{ c.body }}</p>
-          <span class="likes">❤️ {{ getRandomLikes () }}</span>
-          <!-- <span class="likes">❤️ {{ Math.floor(Math.random()*5)+1 }}</span> -->
         </div>
       </div>
     </div>
   </section>
-
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="card author-card">
-      <h4>About the Author</h4>
-      <div class="author-info">
-        <div class="avatar">L</div>
-        <div>
-          <p class="name">Leanne Graham</p>
-          <p class="email">leanne@example.com</p>
-        </div>
-      </div>
-      <button>View Profile</button>
-    </div>
-
-    <div class="card related-posts">
-      <h4>Related Posts</h4>
-      <ul>
-        <li *ngFor="let p of relatedPosts">
-          <a>{{ p.title }}</a>
-          <span class="tag">Technology</span>
-        </li>
-      </ul>
-    </div>
-
-    <div class="card statistics">
-      <h4>Post Statistics</h4>
-      <p>👀 Views: 156</p>
-      <p>❤️ Likes: 42</p>
-      <p>💬 Comments: {{ comments.length }}</p>
-      <p>📅 Last Updated: 2024-01-16</p>
-    </div>
-  </aside>
 </div>

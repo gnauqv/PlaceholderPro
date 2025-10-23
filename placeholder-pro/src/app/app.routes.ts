@@ -8,6 +8,7 @@ import { PostsComponent } from './pages/posts/posts';
 import { PostDetailComponent } from './pages/post-detail/post-detail';
 import { SearchComponent } from './pages/search/search';
 import { AlbumsComponent } from './pages/albums/albums';
+import { AuthComponent } from './pages/auth/auth';
 
 // import { TodosComponent } from './pages/todos/todos';
 
@@ -16,10 +17,7 @@ import { AdminUsers } from './admin/pages/users/users';
 import { AdminPosts } from './admin/pages/posts/posts';
 import { AlbumDetailComponent } from './pages/album-detail/album-detail';
 import { TodosComponent } from './pages/todos/todos';
-import { UsersComponent } from './pages/users/users';
 import { ProfileComponent } from './pages/profile/profile';
-import { ContactPage } from './pages/contact/contact';
-import { AboutPage } from './pages/about/about';
 import { AdminAlbums } from './admin/pages/albums/albums';
 import { AdminTodos } from './admin/pages/todos/todos';
 import { AdminComments } from './admin/pages/comments/comments';
@@ -37,11 +35,11 @@ export const routes: Routes = [
       { path: 'albums', component: AlbumsComponent },
       { path: 'album-detail', component: AlbumDetailComponent },
       { path: 'todos', component: TodosComponent },
-      { path: 'users', component: UsersComponent },
       { path: 'profile', component: ProfileComponent },
-      { path: 'contact', component: ContactPage },
-      { path: 'about', component: AboutPage },
-      // { path: 'todos', component: TodosComponent },
+      { path: 'auth', component: AuthComponent },
+      // { path: 'users', component: UsersComponent },
+      // { path: 'contact', component: ContactPage },
+      // { path: 'about', component: AboutPage },
       { path: '', redirectTo: '', pathMatch: 'full' }
     ]
   },

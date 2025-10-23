@@ -1,75 +1,28 @@
-<div class="todos-page">
-  <!-- Header -->
-  <div class="todos-header">
-    <div>
-      <h1>Todos</h1>
-      <p>Manage and track {{ todos.length }} tasks and todos</p>
-    </div>
-    <div class="header-actions">
-      <button class="btn add"><i class="fas fa-plus"></i> Add Todo</button>
-      <button class="btn back">Back to Home</button>
-    </div>
+<section class="todo-section">
+  <h2>📝 Todo List</h2>
+
+  <!-- Ô tìm kiếm + bộ lọc -->
+  <div class="controls">
+    <input [(ngModel)]="searchText" placeholder="Search todos..." />
+    <select [(ngModel)]="filter">
+      <option *ngFor="let f of filters" [value]="f">{{ f | titlecase }}</option>
+    </select>
   </div>
 
-  <!-- Stats -->
-  <div class="stats">
-    <div class="stat-card">
-      <h2>{{ todos.length }}</h2>
-      <p>Total Todos</p>
-    </div>
-    <div class="stat-card">
-      <h2>{{ completedCount }}</h2>
-      <p>Completed</p>
-    </div>
-    <div class="stat-card">
-      <h2>{{ pendingCount }}</h2>
-      <p>Pending</p>
-    </div>
-    <div class="stat-card">
-      <h2>{{ highPriorityCount }}</h2>
-      <p>High Priority</p>
-    </div>
-  </div>
+  <!-- Danh sách todo -->
+  <ul class="todo-list">
+    <li *ngFor="let todo of filteredTodos" [class.done]="todo.completed">
+      <label>
+        <input type="checkbox" [(ngModel)]="todo.completed" />
+        <span style="margin-left: 8px;">{{ todo.title | slice:0:30 | capitalize }}</span>
+      </label>
+    </li>
+  </ul>
 
-  <!-- Search + Filter -->
-  <div class="todo-filters">
-    <input
-      type="text"
-      placeholder="🔍 Search todos..."
-      [(ngModel)]="searchText"
-    />
-    <div class="filter-buttons">
-      <button [class.active]="filter === 'all'" (click)="filter = 'all'">All</button>
-      <button [class.active]="filter === 'pending'" (click)="filter = 'pending'">Pending</button>
-      <button [class.active]="filter === 'completed'" (click)="filter = 'completed'">Completed</button>
-    </div>
-  </div>
-
-  <!-- Todo List -->
-  <div class="todo-list">
-    <div
-      class="todo-card"
-      *ngFor="let todo of filteredTodos()"
-      [class.completed]="todo.completed"
-    >
-      <div class="todo-checkbox">
-        <input
-          type="checkbox"
-          [(ngModel)]="todo.completed"
-        />
-      </div>
-
-      <div class="todo-content">
-        <h3>{{ todo.title }}</h3>
-        <div class="todo-meta">
-          <span class="user"><i class="fas fa-user"></i> {{ todo.user }}</span>
-          <span class="date"><i class="fas fa-calendar"></i> {{ todo.date }}</span>
-        </div>
-        <div class="todo-tags">
-          <span class="tag priority {{ todo.priority }}">{{ todo.priority }}</span>
-          <span class="tag category">{{ todo.category }}</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  <!-- Loading & thống kê -->
+  <p *ngIf="!todos.length" class="loading">⏳ Loading todos...</p>
+  <p class="stats" *ngIf="todos.length">
+    ✅ Completed: {{ completedCount }} |
+    🕓 Pending: {{ pendingCount }}
+  </p>
+</section>

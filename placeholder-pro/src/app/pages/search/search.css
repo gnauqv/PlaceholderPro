@@ -1,58 +1,73 @@
 .search-page {
   padding: 20px;
-  max-width: 900px;
+  max-width: 800px;
   margin: auto;
+  color: #fff;
   font-family: "Segoe UI", sans-serif;
 }
 
 h2 {
+  text-align: center;
   margin-bottom: 20px;
-  font-size: 22px;
-  color: #fff;
 }
 
 .search-section {
-  background: #fff;
-  margin-bottom: 20px;
+  background: #111;
+  border-radius: 10px;
   padding: 16px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
-.search-section h3 {
+h3 {
+  color: #f0b53b;
+  border-bottom: 1px solid #333;
+  padding-bottom: 6px;
   margin-bottom: 10px;
-  font-size: 18px;
-  color: #444;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 5px;
 }
 
-.search-section ul {
+ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.search-section li {
+li {
   padding: 8px 0;
-  border-bottom: 1px solid #f1f1f1;
+  border-bottom: 1px solid #222;
 }
 
-.search-section li:last-child {
+li:last-child {
   border-bottom: none;
 }
 
-button {
+.link-item {
+  color: #a3d8ff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.link-item:hover {
+  color: #58a6ff;
+  text-decoration: underline;
+}
+
+.btn-group {
   margin-top: 10px;
-  background: #0078ff;
-  color: white;
-  border: none;
-  padding: 8px 14px;
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  background: #222;
+  color: #fff;
+  border: 1px solid #333;
   border-radius: 6px;
+  padding: 6px 12px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: 0.2s;
 }
 
 button:hover {
-  background: #005ecc;
+  background: #333;
+  color: #f0b53b;
 }

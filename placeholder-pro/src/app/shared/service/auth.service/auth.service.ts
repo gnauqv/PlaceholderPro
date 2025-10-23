@@ -1,42 +1,51 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
-  private userKey = 'user'; // key trong localStorage
-  private userSubject = new BehaviorSubject<any>(this.getUserFromStorage());
-  user$ = this.userSubject.asObservable();
+  private _user = new BehaviorSubject<any>(null);
+  user$ = this._user.asObservable();
 
-  private getUserFromStorage() {
-    const user = localStorage.getItem(this.userKey);
-    return user ? JSON.parse(user) : null;
+  constructor() {
+    // Tự động load user từ localStorage
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) this._user.next(JSON.parse(savedUser));
   }
 
-  signup(user: any) {
-    // Demo: không kiểm tra trùng user, thực tế cần API
-    localStorage.setItem(this.userKey, JSON.stringify(user));
-    this.userSubject.next(user);
-    return true;
+  /** Đăng nhập (mô phỏng backend) */
+  async login(email: string, password: string): Promise<any> {
+    if (email && password) {
+      const user = { email, name: email.split('@')[0] };
+      this._user.next(user);
+      localStorage.setItem('user', JSON.stringify(user));
+      return user;
+    } else {
+      throw new Error('Thông tin đăng nhập không hợp lệ!');
+    }
   }
 
-  login(user: any) {
-    // Demo: login giống signup (chỉ lưu user vào local)
-    // Nếu có API thì sẽ check username/password
-    localStorage.setItem(this.userKey, JSON.stringify(user));
-    this.userSubject.next(user);
-    return true;
+  /** Đăng ký (mô phỏng backend) */
+  async signup(email: string, password: string): Promise<any> {
+    if (email && password.length >= 4) {
+      const user = { email, name: email.split('@')[0] };
+      this._user.next(user);
+      localStorage.setItem('user', JSON.stringify(user));
+      return user;
+    } else {
+      throw new Error('Mật khẩu cần ít nhất 4 ký tự!');
+    }
   }
 
+  /** Đăng xuất */
   logout() {
-    localStorage.removeItem(this.userKey);
-    this.userSubject.next(null);
+    this._user.next(null);
+    localStorage.removeItem('user');
   }
 
-  get currentUser() {
-    return this.userSubject.value;
-  }
-
-  isLoggedIn(): boolean {
-    return !!this.currentUser;
+  /** Lấy user hiện tại */
+  getCurrentUser() {
+    return this._user.value;
   }
 }
