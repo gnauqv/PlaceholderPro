@@ -22,6 +22,7 @@ import { AdminAlbums } from './admin/pages/albums/albums';
 import { AdminTodos } from './admin/pages/todos/todos';
 import { AdminComments } from './admin/pages/comments/comments';
 import { AdminLogin } from './admin/pages/login/login';
+import { UsersComponent } from './pages/users/users';
 
 export const routes: Routes = [
   {
@@ -37,7 +38,7 @@ export const routes: Routes = [
       { path: 'todos', component: TodosComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'auth', component: AuthComponent },
-      // { path: 'users', component: UsersComponent },
+      { path: 'users', component: UsersComponent },
       // { path: 'contact', component: ContactPage },
       // { path: 'about', component: AboutPage },
       { path: '', redirectTo: '', pathMatch: 'full' }
